@@ -10,10 +10,10 @@ import (
 	"hash"
 	"io"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/internal/sdkio"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/awserr"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/internal/sdkio"
 )
 
 const (

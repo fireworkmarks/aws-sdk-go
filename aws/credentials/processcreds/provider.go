@@ -88,8 +88,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/journeymidnight/aws-sdk-go/aws/awserr"
+	"github.com/journeymidnight/aws-sdk-go/aws/credentials"
 )
 
 const (

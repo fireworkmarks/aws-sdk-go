@@ -9,9 +9,9 @@
 package clouddirectoryiface
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/service/clouddirectory"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/service/clouddirectory"
 )
 
 // CloudDirectoryAPI provides an interface to enable mocking the

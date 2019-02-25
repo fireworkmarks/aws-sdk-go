@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awsutil"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/private/protocol"
-	"github.com/aws/aws-sdk-go/private/protocol/jsonrpc"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/awsutil"
+	"github.com/journeymidnight/aws-sdk-go/aws/credentials"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/jsonrpc"
 )
 
 const opAddCustomAttributes = "AddCustomAttributes"

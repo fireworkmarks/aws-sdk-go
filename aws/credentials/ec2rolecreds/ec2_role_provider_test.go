@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/credentials/ec2rolecreds"
-	"github.com/aws/aws-sdk-go/aws/ec2metadata"
-	"github.com/aws/aws-sdk-go/awstesting/unit"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/awserr"
+	"github.com/journeymidnight/aws-sdk-go/aws/credentials/ec2rolecreds"
+	"github.com/journeymidnight/aws-sdk-go/aws/ec2metadata"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/unit"
 )
 
 const credsRespTmpl = `{

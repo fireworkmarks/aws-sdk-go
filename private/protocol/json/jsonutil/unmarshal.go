@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/private/protocol"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol"
 )
 
 // UnmarshalJSON reads a stream and unmarshals the results in object v.

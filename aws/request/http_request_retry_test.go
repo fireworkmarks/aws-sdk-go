@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/awstesting/mock"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/mock"
 )
 
 func TestRequestCancelRetry(t *testing.T) {

@@ -5,8 +5,8 @@ package eks
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
 )
 
 // WaitUntilClusterActive uses the Amazon EKS API operation

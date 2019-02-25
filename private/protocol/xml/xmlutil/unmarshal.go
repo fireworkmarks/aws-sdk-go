@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aws/aws-sdk-go/private/protocol"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol"
 )
 
 // UnmarshalXML deserializes an xml.Decoder into the container v. V

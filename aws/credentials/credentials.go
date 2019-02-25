@@ -50,7 +50,7 @@ package credentials
 
 import (
 	"fmt"
-	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/journeymidnight/aws-sdk-go/aws/awserr"
 	"sync"
 	"time"
 )

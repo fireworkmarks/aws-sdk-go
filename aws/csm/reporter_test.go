@@ -11,15 +11,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/client"
-	"github.com/aws/aws-sdk-go/aws/client/metadata"
-	"github.com/aws/aws-sdk-go/aws/csm"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/aws/signer/v4"
-	"github.com/aws/aws-sdk-go/awstesting/unit"
-	"github.com/aws/aws-sdk-go/private/protocol/jsonrpc"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/awserr"
+	"github.com/journeymidnight/aws-sdk-go/aws/client"
+	"github.com/journeymidnight/aws-sdk-go/aws/client/metadata"
+	"github.com/journeymidnight/aws-sdk-go/aws/csm"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/aws/signer/v4"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/unit"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/jsonrpc"
 )
 
 func TestReportingMetrics(t *testing.T) {

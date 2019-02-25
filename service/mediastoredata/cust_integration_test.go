@@ -5,10 +5,10 @@ package mediastoredata_test
 import (
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/awstesting/integration"
-	"github.com/aws/aws-sdk-go/service/mediastore"
-	"github.com/aws/aws-sdk-go/service/mediastoredata"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/integration"
+	"github.com/journeymidnight/aws-sdk-go/service/mediastore"
+	"github.com/journeymidnight/aws-sdk-go/service/mediastoredata"
 )
 
 func TestInteg_DescribeEndpoint(t *testing.T) {

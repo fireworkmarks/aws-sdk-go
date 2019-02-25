@@ -12,16 +12,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/corehandlers"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/awstesting/unit"
-	"github.com/aws/aws-sdk-go/private/protocol"
-	"github.com/aws/aws-sdk-go/private/protocol/eventstream"
-	"github.com/aws/aws-sdk-go/private/protocol/eventstream/eventstreamapi"
-	"github.com/aws/aws-sdk-go/private/protocol/eventstream/eventstreamtest"
-	"github.com/aws/aws-sdk-go/private/protocol/restxml"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/awserr"
+	"github.com/journeymidnight/aws-sdk-go/aws/corehandlers"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/unit"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/eventstream"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/eventstream/eventstreamapi"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/eventstream/eventstreamtest"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/restxml"
 )
 
 var _ time.Time

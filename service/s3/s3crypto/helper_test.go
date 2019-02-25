@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/internal/sdkio"
+	"github.com/journeymidnight/aws-sdk-go/internal/sdkio"
 )
 
 func TestBytesReadWriteSeeker_Read(t *testing.T) {

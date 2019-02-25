@@ -8,10 +8,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/awstesting/integration"
-	"github.com/aws/aws-sdk-go/awstesting/integration/s3integ"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/integration"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/integration/s3integ"
+	"github.com/journeymidnight/aws-sdk-go/service/s3"
 )
 
 const integBucketPrefix = "aws-sdk-go-integration"

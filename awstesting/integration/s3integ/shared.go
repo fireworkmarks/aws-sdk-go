@@ -5,8 +5,8 @@ package s3integ
 import (
 	"fmt"
 
-	"github.com/aws/aws-sdk-go/awstesting/integration"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/journeymidnight/aws-sdk-go/awstesting/integration"
+	"github.com/journeymidnight/aws-sdk-go/service/s3"
 )
 
 // BucketPrefix is the root prefix of integration test buckets.

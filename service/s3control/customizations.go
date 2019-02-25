@@ -1,8 +1,8 @@
 package s3control
 
 import (
-	"github.com/aws/aws-sdk-go/aws/client"
-	"github.com/aws/aws-sdk-go/internal/s3err"
+	"github.com/journeymidnight/aws-sdk-go/aws/client"
+	"github.com/journeymidnight/aws-sdk-go/internal/s3err"
 )
 
 func init() {

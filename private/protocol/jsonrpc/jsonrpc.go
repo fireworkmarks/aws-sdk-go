@@ -10,10 +10,10 @@ import (
 	"io"
 	"strings"
 
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/private/protocol/json/jsonutil"
-	"github.com/aws/aws-sdk-go/private/protocol/rest"
+	"github.com/journeymidnight/aws-sdk-go/aws/awserr"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/json/jsonutil"
+	"github.com/journeymidnight/aws-sdk-go/private/protocol/rest"
 )
 
 var emptyJSON = []byte("{}")

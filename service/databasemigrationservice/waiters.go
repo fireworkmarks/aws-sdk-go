@@ -5,8 +5,8 @@ package databasemigrationservice
 import (
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
 )
 
 // WaitUntilEndpointDeleted uses the AWS Database Migration Service API operation

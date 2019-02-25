@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/aws/aws-sdk-go/internal/shareddefaults"
+	"github.com/journeymidnight/aws-sdk-go/internal/shareddefaults"
 )
 
 func TestSharedCredentialsProvider(t *testing.T) {

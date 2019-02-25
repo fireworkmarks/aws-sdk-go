@@ -9,9 +9,9 @@
 package resourcegroupsiface
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/service/resourcegroups"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/service/resourcegroups"
 )
 
 // ResourceGroupsAPI provides an interface to enable mocking the

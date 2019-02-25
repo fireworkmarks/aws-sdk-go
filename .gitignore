@@ -1,4 +1,5 @@
 dist
+.idea/
 /doc
 /doc-staging
 .yardoc

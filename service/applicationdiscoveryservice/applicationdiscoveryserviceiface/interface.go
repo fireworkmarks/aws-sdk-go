@@ -9,9 +9,9 @@
 package applicationdiscoveryserviceiface
 
 import (
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/request"
-	"github.com/aws/aws-sdk-go/service/applicationdiscoveryservice"
+	"github.com/journeymidnight/aws-sdk-go/aws"
+	"github.com/journeymidnight/aws-sdk-go/aws/request"
+	"github.com/journeymidnight/aws-sdk-go/service/applicationdiscoveryservice"
 )
 
 // ApplicationDiscoveryServiceAPI provides an interface to enable mocking the

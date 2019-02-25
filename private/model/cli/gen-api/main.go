@@ -16,8 +16,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/aws/aws-sdk-go/private/model/api"
-	"github.com/aws/aws-sdk-go/private/util"
+	"github.com/journeymidnight/aws-sdk-go/private/model/api"
+	"github.com/journeymidnight/aws-sdk-go/private/util"
 )
 
 func usage() {
@@ -50,7 +50,7 @@ func main() {
 		"The `path` to generate service clients in to.",
 	)
 	flag.StringVar(&svcImportPath, "svc-import-path",
-		"github.com/aws/aws-sdk-go/service",
+		"github.com/journeymidnight/aws-sdk-go/service",
 		"The Go `import path` to generate client to be under.",
 	)
 	flag.Usage = usage
