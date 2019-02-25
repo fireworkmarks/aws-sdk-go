@@ -22109,6 +22109,7 @@ type Rule struct {
 
 	Expiration *LifecycleExpiration `type:"structure"`
 
+
 	// Unique identifier for the rule. The value cannot be longer than 255 characters.
 	ID *string `type:"string"`
 
@@ -24202,6 +24203,8 @@ func (s *WebsiteConfiguration) SetRoutingRules(v []*RoutingRule) *WebsiteConfigu
 	s.RoutingRules = v
 	return s
 }
+
+
 
 const (
 	// AnalyticsS3ExportFileFormatCsv is a AnalyticsS3ExportFileFormat enum value
