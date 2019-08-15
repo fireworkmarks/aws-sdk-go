@@ -259,6 +259,34 @@ func (c *S3) CopyObjectWithContext(ctx aws.Context, input *CopyObjectInput, opts
 	return out, req.Send()
 }
 
+func (c *S3) RenameObjectRequest(input *CopyObjectInput) (req *request.Request, output *CopyObjectOutput) {
+	op := &request.Operation{
+		Name:       opCopyObject,
+		HTTPMethod: "POST",
+		HTTPPath:   "/{Bucket}/{Key+}",
+	}
+
+	if input == nil {
+		input = &CopyObjectInput{}
+	}
+
+	output = &CopyObjectOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+func (c *S3) RenameObject(input *CopyObjectInput) (*CopyObjectOutput, error) {
+	req, out := c.CopyObjectRequest(input)
+	return out, req.Send()
+}
+
+func (c *S3) RenameObjectWithContext(ctx aws.Context, input *CopyObjectInput, opts ...request.Option) (*CopyObjectOutput, error) {
+	req, out := c.CopyObjectRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opCreateBucket = "CreateBucket"
 
 // CreateBucketRequest generates a "aws/request.Request" representing the
@@ -6912,7 +6940,7 @@ func (c *S3) UploadPartRequest(input *UploadPartInput) (req *request.Request, ou
 // with awserr.Error's Code and Message methods to get detailed information about
 // the error.
 //
-// See the AWS API reference guide for Amazon Simple Storage Service's
+// See the AWS API referFence guide for Amazon Simple Storage Service's
 // API operation UploadPart for usage and error information.
 // See also, https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPart
 func (c *S3) UploadPart(input *UploadPartInput) (*UploadPartOutput, error) {
@@ -8365,7 +8393,7 @@ type CopyObjectInput struct {
 	ACL *string `location:"header" locationName:"x-amz-acl" type:"string" enum:"ObjectCannedACL"`
 
 	// Bucket is a required field
-	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+	FBucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
 
 	// Specifies caching behavior along the request/reply chain.
 	CacheControl *string `location:"header" locationName:"Cache-Control" type:"string"`
