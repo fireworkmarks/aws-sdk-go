@@ -6940,7 +6940,7 @@ func (c *S3) UploadPartRequest(input *UploadPartInput) (req *request.Request, ou
 // with awserr.Error's Code and Message methods to get detailed information about
 // the error.
 //
-// See the AWS API referFence guide for Amazon Simple Storage Service's
+// See the AWS API reference guide for Amazon Simple Storage Service's
 // API operation UploadPart for usage and error information.
 // See also, https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPart
 func (c *S3) UploadPart(input *UploadPartInput) (*UploadPartOutput, error) {
@@ -8393,7 +8393,7 @@ type CopyObjectInput struct {
 	ACL *string `location:"header" locationName:"x-amz-acl" type:"string" enum:"ObjectCannedACL"`
 
 	// Bucket is a required field
-	FBucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
 
 	// Specifies caching behavior along the request/reply chain.
 	CacheControl *string `location:"header" locationName:"Cache-Control" type:"string"`
