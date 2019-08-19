@@ -8969,11 +8969,10 @@ type RenameObjectInput struct {
 	// Bucket is a required field
 	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
 
-	// The name of the source bucket and key name of the source object, separated
-	// by a slash (/). Must be URL-encoded.
-	//
-	// CopySource is a required field
-	CopySource *string `location:"header" locationName:"x-amz-copy-source" type:"string" required:"true"`
+	// The name of the source bucket and key name of the source object
+	// Must be URL-encoded.
+	// RenameSource is a required field
+	RenameSourcekey *string `location:"header" locationName:"x-amz-rename-source-key" type:"string" required:"true"`
 
 	// Key is a required field
 	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
@@ -8998,8 +8997,8 @@ func (s *RenameObjectInput) Validate() error {
 	if s.Bucket != nil && len(*s.Bucket) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("Bucket", 1))
 	}
-	if s.CopySource == nil {
-		invalidParams.Add(request.NewErrParamRequired("RenameSource"))
+	if s.RenameSourcekey == nil {
+		invalidParams.Add(request.NewErrParamRequired("RenameSourceKey"))
 	}
 	if s.Key == nil {
 		invalidParams.Add(request.NewErrParamRequired("Key"))
@@ -9027,9 +9026,9 @@ func (s *RenameObjectInput) getBucket() (v string) {
 	return *s.Bucket
 }
 
-// SetCopySource sets the CopySource field's value.
-func (s *RenameObjectInput) SetCopySource(v string) *RenameObjectInput {
-	s.CopySource = &v
+// SetRenameSourceKey sets the RenameSourceKey field's value.
+func (s *RenameObjectInput) SetRenameSourceKey(v string) *RenameObjectInput {
+	s.RenameSourcekey = &v
 	return s
 }
 
@@ -9040,37 +9039,9 @@ func (s *RenameObjectInput) SetKey(v string) *RenameObjectInput {
 }
 
 type RenameObjectOutput struct {
-	_ struct{} `type:"structure" payload:"CopyObjectResult"`
-
-	CopyObjectResult *RenameObjectResult `type:"structure"`
-
-	CopySourceVersionId *string `location:"header" locationName:"x-amz-copy-source-version-id" type:"string"`
-
-	// If the object expiration is configured, the response includes this header.
-	Expiration *string `location:"header" locationName:"x-amz-expiration" type:"string"`
-
-	// If present, indicates that the requester was successfully charged for the
-	// request.
-	RequestCharged *string `location:"header" locationName:"x-amz-request-charged" type:"string" enum:"RequestCharged"`
-
-	// If server-side encryption with a customer-provided encryption key was requested,
-	// the response will include this header confirming the encryption algorithm
-	// used.
-	SSECustomerAlgorithm *string `location:"header" locationName:"x-amz-server-side-encryption-customer-algorithm" type:"string"`
-
-	// If server-side encryption with a customer-provided encryption key was requested,
-	// the response will include this header to provide round trip message integrity
-	// verification of the customer-provided encryption key.
-	SSECustomerKeyMD5 *string `location:"header" locationName:"x-amz-server-side-encryption-customer-key-MD5" type:"string"`
-
-	// If present, specifies the ID of the AWS Key Management Service (KMS) master
-	// encryption key that was used for the object.
-	SSEKMSKeyId *string `location:"header" locationName:"x-amz-server-side-encryption-aws-kms-key-id" type:"string" sensitive:"true"`
-
-	// The Server-side encryption algorithm used when storing this object in S3
-	// (e.g., AES256, aws:kms).
-	ServerSideEncryption *string `location:"header" locationName:"x-amz-server-side-encryption" type:"string" enum:"ServerSideEncryption"`
-
+	_ struct{} `type:"structure" payload:"RenameObjectResult"`
+	RenameObjectResult *RenameObjectResult `type:"structure"`
+	RenameSourceVersionId *string `location:"header" locationName:"x-amz-rename-source-version-id" type:"string"`
 	// Version ID of the newly created copy.
 	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
 }
@@ -9085,51 +9056,15 @@ func (s RenameObjectOutput) GoString() string {
 	return s.String()
 }
 
-// SetCopyObjectResult sets the CopyObjectResult field's value.
-func (s *RenameObjectOutput) SetCopyObjectResult(v *RenameObjectResult) *RenameObjectOutput {
-	s.CopyObjectResult = v
+// SetRenameObjectResult sets the RenameObjectResult field's value.
+func (s *RenameObjectOutput) SetRenameObjectResult(v *RenameObjectResult) *RenameObjectOutput {
+	s.RenameObjectResult = v
 	return s
 }
 
-// SetCopySourceVersionId sets the CopySourceVersionId field's value.
-func (s *RenameObjectOutput) SetCopySourceVersionId(v string) *RenameObjectOutput {
-	s.CopySourceVersionId = &v
-	return s
-}
-
-// SetExpiration sets the Expiration field's value.
-func (s *RenameObjectOutput) SetExpiration(v string) *RenameObjectOutput {
-	s.Expiration = &v
-	return s
-}
-
-// SetRequestCharged sets the RequestCharged field's value.
-func (s *RenameObjectOutput) SetRequestCharged(v string) *RenameObjectOutput {
-	s.RequestCharged = &v
-	return s
-}
-
-// SetSSECustomerAlgorithm sets the SSECustomerAlgorithm field's value.
-func (s *RenameObjectOutput) SetSSECustomerAlgorithm(v string) *RenameObjectOutput {
-	s.SSECustomerAlgorithm = &v
-	return s
-}
-
-// SetSSECustomerKeyMD5 sets the SSECustomerKeyMD5 field's value.
-func (s *RenameObjectOutput) SetSSECustomerKeyMD5(v string) *RenameObjectOutput {
-	s.SSECustomerKeyMD5 = &v
-	return s
-}
-
-// SetSSEKMSKeyId sets the SSEKMSKeyId field's value.
-func (s *RenameObjectOutput) SetSSEKMSKeyId(v string) *RenameObjectOutput {
-	s.SSEKMSKeyId = &v
-	return s
-}
-
-// SetServerSideEncryption sets the ServerSideEncryption field's value.
-func (s *RenameObjectOutput) SetServerSideEncryption(v string) *RenameObjectOutput {
-	s.ServerSideEncryption = &v
+// SetRenameSourceVersionId sets the RenameSourceVersionId field's value.
+func (s *RenameObjectOutput) SetRenameSourceVersionId(v string) *RenameObjectOutput {
+	s.RenameSourceVersionId = &v
 	return s
 }
 
@@ -9141,9 +9076,6 @@ func (s *RenameObjectOutput) SetVersionId(v string) *RenameObjectOutput {
 
 type RenameObjectResult struct {
 	_ struct{} `type:"structure"`
-
-	ETag *string `type:"string"`
-
 	LastModified *time.Time `type:"timestamp"`
 }
 
@@ -9155,12 +9087,6 @@ func (s RenameObjectResult) String() string {
 // GoString returns the string representation
 func (s RenameObjectResult) GoString() string {
 	return s.String()
-}
-
-// SetETag sets the ETag field's value.
-func (s *RenameObjectResult) SetETag(v string) *RenameObjectResult {
-	s.ETag = &v
-	return s
 }
 
 // SetLastModified sets the LastModified field's value.
