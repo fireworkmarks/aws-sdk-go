@@ -8972,7 +8972,7 @@ type RenameObjectInput struct {
 	// The name of the source bucket and key name of the source object
 	// Must be URL-encoded.
 	// RenameSource is a required field
-	RenameSourcekey *string `location:"header" locationName:"x-amz-rename-source-key" type:"string" required:"true"`
+	RenameSourceKey *string `location:"header" locationName:"x-amz-rename-source-key" type:"string" required:"true"`
 
 	// Key is a required field
 	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
@@ -8997,7 +8997,7 @@ func (s *RenameObjectInput) Validate() error {
 	if s.Bucket != nil && len(*s.Bucket) < 1 {
 		invalidParams.Add(request.NewErrParamMinLen("Bucket", 1))
 	}
-	if s.RenameSourcekey == nil {
+	if s.RenameSourceKey == nil {
 		invalidParams.Add(request.NewErrParamRequired("RenameSourceKey"))
 	}
 	if s.Key == nil {
@@ -9028,7 +9028,7 @@ func (s *RenameObjectInput) getBucket() (v string) {
 
 // SetRenameSourceKey sets the RenameSourceKey field's value.
 func (s *RenameObjectInput) SetRenameSourceKey(v string) *RenameObjectInput {
-	s.RenameSourcekey = &v
+	s.RenameSourceKey = &v
 	return s
 }
 
