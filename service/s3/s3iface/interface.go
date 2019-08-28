@@ -72,9 +72,9 @@ type S3API interface {
 	CopyObjectWithContext(aws.Context, *s3.CopyObjectInput, ...request.Option) (*s3.CopyObjectOutput, error)
 	CopyObjectRequest(*s3.CopyObjectInput) (*request.Request, *s3.CopyObjectOutput)
 
-	RenameObject(*s3.CopyObjectInput) (*s3.CopyObjectOutput, error)
-	RenameObjectWithContext(aws.Context, *s3.CopyObjectInput, ...request.Option) (*s3.CopyObjectOutput, error)
-	RenameObjectRequest(*s3.CopyObjectInput) (*request.Request, *s3.CopyObjectOutput)
+	RenameObject(*s3.RenameObjectInput) (*s3.RenameObjectOutput, error)
+	RenameObjectWithContext(aws.Context, *s3.RenameObjectInput, ...request.Option) (*s3.RenameObjectOutput, error)
+	RenameObjectRequest(*s3.RenameObjectInput) (*request.Request, *s3.RenameObjectOutput)
 
 	CreateBucket(*s3.CreateBucketInput) (*s3.CreateBucketOutput, error)
 	CreateBucketWithContext(aws.Context, *s3.CreateBucketInput, ...request.Option) (*s3.CreateBucketOutput, error)
