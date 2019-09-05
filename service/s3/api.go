@@ -264,7 +264,7 @@ const opRenameObject = "RenameObject"
 func (c *S3) RenameObjectRequest(input *RenameObjectInput) (req *request.Request, output *RenameObjectOutput) {
 	op := &request.Operation{
 		Name:       opRenameObject,
-		HTTPMethod: "POST",
+		HTTPMethod: "PUT",
 		HTTPPath:   "/{Bucket}/{Key+}",
 	}
 
