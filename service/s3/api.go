@@ -7040,31 +7040,31 @@ func (c *S3) UploadPartCopyWithContext(ctx aws.Context, input *UploadPartCopyInp
 	return out, req.Send()
 }
 
-const opPutObjectCustomAttrs = "PutObjectCustomAttrs"
+const opPutObjectMeta = "PutObjectMeta"
 
-func (c *S3) PutObjectCustomAttrsRequest(input *PutObjectCustomAttrsInput) (req *request.Request, output *PutObjectCustomAttrsOutput) {
+func (c *S3) PutObjectMetaRequest(input *PutObjectMetaInput) (req *request.Request, output *PutObjectMetaOutput) {
 	op := &request.Operation{
-		Name:       opPutObjectCustomAttrs,
+		Name:       opPutObjectMeta,
 		HTTPMethod: "POST",
 		HTTPPath:   "/{Bucket}/{Key+}?meta",
 	}
 
 	if input == nil {
-		input = &PutObjectCustomAttrsInput{}
+		input = &PutObjectMetaInput{}
 	}
 
-	output = &PutObjectCustomAttrsOutput{}
+	output = &PutObjectMetaOutput{}
 	req = c.newRequest(op, input, output)
 	return
 }
 
-func (c *S3) PutObjectCustomAttrs(input *PutObjectCustomAttrsInput) (*PutObjectCustomAttrsOutput, error) {
-	req, out := c.PutObjectCustomAttrsRequest(input)
+func (c *S3) PutObjectMeta(input *PutObjectMetaInput) (*PutObjectMetaOutput, error) {
+	req, out := c.PutObjectMetaRequest(input)
 	return out, req.Send()
 }
 
-func (c *S3) PutObjectCustomAttrsWithContext(ctx aws.Context, input *PutObjectCustomAttrsInput, opts ...request.Option) (*PutObjectCustomAttrsOutput, error) {
-	req, out := c.PutObjectCustomAttrsRequest(input)
+func (c *S3) PutObjectMetaWithContext(ctx aws.Context, input *PutObjectMetaInput, opts ...request.Option) (*PutObjectMetaOutput, error) {
+	req, out := c.PutObjectMetaRequest(input)
 	req.SetContext(ctx)
 	req.ApplyOptions(opts...)
 	return out, req.Send()
@@ -24395,7 +24395,7 @@ func (s *WebsiteConfiguration) SetRoutingRules(v []*RoutingRule) *WebsiteConfigu
 	return s
 }
 
-type PutObjectCustomAttrsInput struct {
+type PutObjectMetaInput struct {
 	_ struct{} `type:"structure"`
 
 	// Bucket is a required field
@@ -24433,18 +24433,18 @@ type PutObjectCustomAttrsInput struct {
 }
 
 // String returns the string representation
-func (s PutObjectCustomAttrsInput) String() string {
+func (s PutObjectMetaInput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s PutObjectCustomAttrsInput) GoString() string {
+func (s PutObjectMetaInput) GoString() string {
 	return s.String()
 }
 
 // Validate inspects the fields of the type to determine if they are valid.
-func (s *PutObjectCustomAttrsInput) Validate() error {
-	invalidParams := request.ErrInvalidParams{Context: "PutObjectCustomAttrsInput"}
+func (s *PutObjectMetaInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "PutObjectMetaInput"}
 	if s.Bucket == nil {
 		invalidParams.Add(request.NewErrParamRequired("Bucket"))
 	}
@@ -24465,12 +24465,12 @@ func (s *PutObjectCustomAttrsInput) Validate() error {
 }
 
 // SetBucket sets the Bucket field's value.
-func (s *PutObjectCustomAttrsInput) SetBucket(v string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetBucket(v string) *PutObjectMetaInput {
 	s.Bucket = &v
 	return s
 }
 
-func (s *PutObjectCustomAttrsInput) getBucket() (v string) {
+func (s *PutObjectMetaInput) getBucket() (v string) {
 	if s.Bucket == nil {
 		return v
 	}
@@ -24478,91 +24478,91 @@ func (s *PutObjectCustomAttrsInput) getBucket() (v string) {
 }
 
 // SetCacheControl sets the CacheControl field's value.
-func (s *PutObjectCustomAttrsInput) SetCacheControl(v string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetCacheControl(v string) *PutObjectMetaInput {
 	s.CacheControl = &v
 	return s
 }
 
 // SetContentDisposition sets the ContentDisposition field's value.
-func (s *PutObjectCustomAttrsInput) SetContentDisposition(v string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetContentDisposition(v string) *PutObjectMetaInput {
 	s.ContentDisposition = &v
 	return s
 }
 
 // SetContentEncoding sets the ContentEncoding field's value.
-func (s *PutObjectCustomAttrsInput) SetContentEncoding(v string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetContentEncoding(v string) *PutObjectMetaInput {
 	s.ContentEncoding = &v
 	return s
 }
 
 // SetContentLanguage sets the ContentLanguage field's value.
-func (s *PutObjectCustomAttrsInput) SetContentLanguage(v string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetContentLanguage(v string) *PutObjectMetaInput {
 	s.ContentLanguage = &v
 	return s
 }
 
 // SetContentLength sets the ContentLength field's value.
-func (s *PutObjectCustomAttrsInput) SetContentLength(v int64) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetContentLength(v int64) *PutObjectMetaInput {
 	s.ContentLength = &v
 	return s
 }
 
 // SetContentType sets the ContentType field's value.
-func (s *PutObjectCustomAttrsInput) SetContentType(v string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetContentType(v string) *PutObjectMetaInput {
 	s.ContentType = &v
 	return s
 }
 
 // SetExpires sets the Expires field's value.
-func (s *PutObjectCustomAttrsInput) SetExpires(v time.Time) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetExpires(v time.Time) *PutObjectMetaInput {
 	s.Expires = &v
 	return s
 }
 
 // SetKey sets the Key field's value.
-func (s *PutObjectCustomAttrsInput) SetKey(v string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetKey(v string) *PutObjectMetaInput {
 	s.Key = &v
 	return s
 }
 
 // SetMetadata sets the Metadata field's value.
-func (s *PutObjectCustomAttrsInput) SetMetadata(v map[string]*string) *PutObjectCustomAttrsInput {
+func (s *PutObjectMetaInput) SetMetadata(v map[string]*string) *PutObjectMetaInput {
 	s.Metadata = v
 	return s
 }
 
-type PutObjectCustomAttrsOutput struct {
-	_ struct{} `type:"structure" payload:"PutObjectCustomAttrsResult"`
+type PutObjectMetaOutput struct {
+	_ struct{} `type:"structure" payload:"PutObjectMetaResult"`
 
-	PutObjectCustomAttrsResult *PutObjectCustomAttrsResult `type:"structure"`
+	PutObjectMetaResult *PutObjectMetaResult `type:"structure"`
 
 	// Version ID of the newly created copy.
 	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
 }
 
 // String returns the string representation
-func (s PutObjectCustomAttrsOutput) String() string {
+func (s PutObjectMetaOutput) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s PutObjectCustomAttrsOutput) GoString() string {
+func (s PutObjectMetaOutput) GoString() string {
 	return s.String()
 }
 
 // SetCopyObjectResult sets the CopyObjectResult field's value.
-func (s *PutObjectCustomAttrsOutput) SetCopyObjectResult(v *PutObjectCustomAttrsResult) *PutObjectCustomAttrsOutput {
+func (s *PutObjectMetaOutput) SetCopyObjectResult(v *PutObjectMetaResult) *PutObjectMetaOutput {
 	s.CopyObjectResult = v
 	return s
 }
 
 // SetVersionId sets the VersionId field's value.
-func (s *PutObjectCustomAttrsOutput) SetVersionId(v string) *PutObjectCustomAttrsOutput {
+func (s *PutObjectMetaOutput) SetVersionId(v string) *PutObjectMetaOutput {
 	s.VersionId = &v
 	return s
 }
 
-type PutObjectCustomAttrsResult struct {
+type PutObjectMetaResult struct {
 	_ struct{} `type:"structure"`
 
 	ETag *string `type:"string"`
@@ -24571,23 +24571,23 @@ type PutObjectCustomAttrsResult struct {
 }
 
 // String returns the string representation
-func (s PutObjectCustomAttrsResult) String() string {
+func (s PutObjectMetaResult) String() string {
 	return awsutil.Prettify(s)
 }
 
 // GoString returns the string representation
-func (s PutObjectCustomAttrsResult) GoString() string {
+func (s PutObjectMetaResult) GoString() string {
 	return s.String()
 }
 
 // SetETag sets the ETag field's value.
-func (s *PutObjectCustomAttrsResult) SetETag(v string) *PutObjectCustomAttrsResult {
+func (s *PutObjectMetaResult) SetETag(v string) *PutObjectMetaResult {
 	s.ETag = &v
 	return s
 }
 
 // SetLastModified sets the LastModified field's value.
-func (s *PutObjectCustomAttrsResult) SetLastModified(v time.Time) *PutObjectCustomAttrsResult {
+func (s *PutObjectMetaResult) SetLastModified(v time.Time) *PutObjectMetaResult {
 	s.LastModified = &v
 	return s
 }

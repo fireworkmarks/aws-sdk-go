@@ -411,9 +411,9 @@ type S3API interface {
 	PutObjectTaggingWithContext(aws.Context, *s3.PutObjectTaggingInput, ...request.Option) (*s3.PutObjectTaggingOutput, error)
 	PutObjectTaggingRequest(*s3.PutObjectTaggingInput) (*request.Request, *s3.PutObjectTaggingOutput)
 
-	PutObjectCustomAttrsRequest(input *PutObjectCustomAttrsInput) (req *request.Request, output *PutObjectCustomAttrsOutput)
-	PutObjectCustomAttrs(input *PutObjectCustomAttrsInput) (*PutObjectCustomAttrsOutput, error)
-	PutObjectCustomAttrsWithContext(ctx aws.Context, input *PutObjectCustomAttrsInput, opts ...request.Option) (*PutObjectCustomAttrsOutput, error)
+	PutObjectMetaRequest(input *PutObjectCustomAttrsInput) (req *request.Request, output *PutObjectCustomAttrsOutput)
+	PutObjectMeta(input *PutObjectCustomAttrsInput) (*PutObjectCustomAttrsOutput, error)
+	PutObjectMetaWithContext(ctx aws.Context, input *PutObjectCustomAttrsInput, opts ...request.Option) (*PutObjectCustomAttrsOutput, error)
 
 	PutPublicAccessBlock(*s3.PutPublicAccessBlockInput) (*s3.PutPublicAccessBlockOutput, error)
 	PutPublicAccessBlockWithContext(aws.Context, *s3.PutPublicAccessBlockInput, ...request.Option) (*s3.PutPublicAccessBlockOutput, error)
