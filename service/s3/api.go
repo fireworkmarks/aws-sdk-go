@@ -7040,6 +7040,36 @@ func (c *S3) UploadPartCopyWithContext(ctx aws.Context, input *UploadPartCopyInp
 	return out, req.Send()
 }
 
+const opPutObjectCustomAttrs = "PutObjectCustomAttrs"
+
+func (c *S3) PutObjectCustomAttrsRequest(input *PutObjectCustomAttrsInput) (req *request.Request, output *PutObjectCustomAttrsOutput) {
+	op := &request.Operation{
+		Name:       opPutObjectCustomAttrs,
+		HTTPMethod: "POST",
+		HTTPPath:   "/{Bucket}/{Key+}?meta",
+	}
+
+	if input == nil {
+		input = &PutObjectCustomAttrsInput{}
+	}
+
+	output = &PutObjectCustomAttrsOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+func (c *S3) PutObjectCustomAttrs(input *PutObjectCustomAttrsInput) (*PutObjectCustomAttrsOutput, error) {
+	req, out := c.PutObjectCustomAttrsRequest(input)
+	return out, req.Send()
+}
+
+func (c *S3) PutObjectCustomAttrsWithContext(ctx aws.Context, input *PutObjectCustomAttrsInput, opts ...request.Option) (*PutObjectCustomAttrsOutput, error) {
+	req, out := c.PutObjectCustomAttrsRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 // Specifies the days since the initiation of an Incomplete Multipart Upload
 // that Lifecycle will wait before permanently removing all parts of the upload.
 type AbortIncompleteMultipartUpload struct {
@@ -9039,9 +9069,9 @@ func (s *RenameObjectInput) SetKey(v string) *RenameObjectInput {
 }
 
 type RenameObjectOutput struct {
-	_ struct{} `type:"structure" payload:"RenameObjectResult"`
-	RenameObjectResult *RenameObjectResult `type:"structure"`
-	RenameSourceVersionId *string `location:"header" locationName:"x-amz-rename-source-version-id" type:"string"`
+	_                     struct{}            `type:"structure" payload:"RenameObjectResult"`
+	RenameObjectResult    *RenameObjectResult `type:"structure"`
+	RenameSourceVersionId *string             `location:"header" locationName:"x-amz-rename-source-version-id" type:"string"`
 	// Version ID of the newly created copy.
 	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
 }
@@ -9075,7 +9105,7 @@ func (s *RenameObjectOutput) SetVersionId(v string) *RenameObjectOutput {
 }
 
 type RenameObjectResult struct {
-	_ struct{} `type:"structure"`
+	_            struct{}   `type:"structure"`
 	LastModified *time.Time `type:"timestamp"`
 }
 
@@ -22271,7 +22301,6 @@ type Rule struct {
 
 	Expiration *LifecycleExpiration `type:"structure"`
 
-
 	// Unique identifier for the rule. The value cannot be longer than 255 characters.
 	ID *string `type:"string"`
 
@@ -24366,7 +24395,202 @@ func (s *WebsiteConfiguration) SetRoutingRules(v []*RoutingRule) *WebsiteConfigu
 	return s
 }
 
+type PutObjectCustomAttrsInput struct {
+	_ struct{} `type:"structure"`
 
+	// Bucket is a required field
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+
+	// Specifies caching behavior along the request/reply chain.
+	CacheControl *string `location:"header" locationName:"Cache-Control" type:"string"`
+
+	// Specifies presentational information for the object.
+	ContentDisposition *string `location:"header" locationName:"Content-Disposition" type:"string"`
+
+	// Specifies what content encodings have been applied to the object and thus
+	// what decoding mechanisms must be applied to obtain the media-type referenced
+	// by the Content-Type header field.
+	ContentEncoding *string `location:"header" locationName:"Content-Encoding" type:"string"`
+
+	// The language the content is in.
+	ContentLanguage *string `location:"header" locationName:"Content-Language" type:"string"`
+
+	// Size of the body in bytes. This parameter is useful when the size of the
+	// body cannot be determined automatically.
+	ContentLength *int64 `location:"header" locationName:"Content-Length" type:"long"`
+
+	// A standard MIME type describing the format of the object data.
+	ContentType *string `location:"header" locationName:"Content-Type" type:"string"`
+
+	// The date and time at which the object is no longer cacheable.
+	Expires *time.Time `location:"header" locationName:"Expires" type:"timestamp"`
+
+	// A map of metadata to store with the object in S3.
+	Metadata map[string]*string `location:"headers" locationName:"x-amz-meta-" type:"map"`
+
+	// Key is a required field
+	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s PutObjectCustomAttrsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutObjectCustomAttrsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *PutObjectCustomAttrsInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "PutObjectCustomAttrsInput"}
+	if s.Bucket == nil {
+		invalidParams.Add(request.NewErrParamRequired("Bucket"))
+	}
+	if s.Bucket != nil && len(*s.Bucket) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Bucket", 1))
+	}
+	if s.Key == nil {
+		invalidParams.Add(request.NewErrParamRequired("Key"))
+	}
+	if s.Key != nil && len(*s.Key) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Key", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetBucket sets the Bucket field's value.
+func (s *PutObjectCustomAttrsInput) SetBucket(v string) *PutObjectCustomAttrsInput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *PutObjectCustomAttrsInput) getBucket() (v string) {
+	if s.Bucket == nil {
+		return v
+	}
+	return *s.Bucket
+}
+
+// SetCacheControl sets the CacheControl field's value.
+func (s *PutObjectCustomAttrsInput) SetCacheControl(v string) *PutObjectCustomAttrsInput {
+	s.CacheControl = &v
+	return s
+}
+
+// SetContentDisposition sets the ContentDisposition field's value.
+func (s *PutObjectCustomAttrsInput) SetContentDisposition(v string) *PutObjectCustomAttrsInput {
+	s.ContentDisposition = &v
+	return s
+}
+
+// SetContentEncoding sets the ContentEncoding field's value.
+func (s *PutObjectCustomAttrsInput) SetContentEncoding(v string) *PutObjectCustomAttrsInput {
+	s.ContentEncoding = &v
+	return s
+}
+
+// SetContentLanguage sets the ContentLanguage field's value.
+func (s *PutObjectCustomAttrsInput) SetContentLanguage(v string) *PutObjectCustomAttrsInput {
+	s.ContentLanguage = &v
+	return s
+}
+
+// SetContentLength sets the ContentLength field's value.
+func (s *PutObjectCustomAttrsInput) SetContentLength(v int64) *PutObjectCustomAttrsInput {
+	s.ContentLength = &v
+	return s
+}
+
+// SetContentType sets the ContentType field's value.
+func (s *PutObjectCustomAttrsInput) SetContentType(v string) *PutObjectCustomAttrsInput {
+	s.ContentType = &v
+	return s
+}
+
+// SetExpires sets the Expires field's value.
+func (s *PutObjectCustomAttrsInput) SetExpires(v time.Time) *PutObjectCustomAttrsInput {
+	s.Expires = &v
+	return s
+}
+
+// SetKey sets the Key field's value.
+func (s *PutObjectCustomAttrsInput) SetKey(v string) *PutObjectCustomAttrsInput {
+	s.Key = &v
+	return s
+}
+
+// SetMetadata sets the Metadata field's value.
+func (s *PutObjectCustomAttrsInput) SetMetadata(v map[string]*string) *PutObjectCustomAttrsInput {
+	s.Metadata = v
+	return s
+}
+
+type PutObjectCustomAttrsOutput struct {
+	_ struct{} `type:"structure" payload:"PutObjectCustomAttrsResult"`
+
+	PutObjectCustomAttrsResult *PutObjectCustomAttrsResult `type:"structure"`
+
+	// Version ID of the newly created copy.
+	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
+}
+
+// String returns the string representation
+func (s PutObjectCustomAttrsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutObjectCustomAttrsOutput) GoString() string {
+	return s.String()
+}
+
+// SetCopyObjectResult sets the CopyObjectResult field's value.
+func (s *PutObjectCustomAttrsOutput) SetCopyObjectResult(v *PutObjectCustomAttrsResult) *PutObjectCustomAttrsOutput {
+	s.CopyObjectResult = v
+	return s
+}
+
+// SetVersionId sets the VersionId field's value.
+func (s *PutObjectCustomAttrsOutput) SetVersionId(v string) *PutObjectCustomAttrsOutput {
+	s.VersionId = &v
+	return s
+}
+
+type PutObjectCustomAttrsResult struct {
+	_ struct{} `type:"structure"`
+
+	ETag *string `type:"string"`
+
+	LastModified *time.Time `type:"timestamp"`
+}
+
+// String returns the string representation
+func (s PutObjectCustomAttrsResult) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutObjectCustomAttrsResult) GoString() string {
+	return s.String()
+}
+
+// SetETag sets the ETag field's value.
+func (s *PutObjectCustomAttrsResult) SetETag(v string) *PutObjectCustomAttrsResult {
+	s.ETag = &v
+	return s
+}
+
+// SetLastModified sets the LastModified field's value.
+func (s *PutObjectCustomAttrsResult) SetLastModified(v time.Time) *PutObjectCustomAttrsResult {
+	s.LastModified = &v
+	return s
+}
 
 const (
 	// AnalyticsS3ExportFileFormatCsv is a AnalyticsS3ExportFileFormat enum value

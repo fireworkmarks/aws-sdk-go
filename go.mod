@@ -6,3 +6,5 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/stretchr/objx v0.2.0 // indirect
 )
+
+go 1.13
