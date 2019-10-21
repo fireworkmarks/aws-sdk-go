@@ -9069,11 +9069,8 @@ func (s *RenameObjectInput) SetKey(v string) *RenameObjectInput {
 }
 
 type RenameObjectOutput struct {
-	_                     struct{}            `type:"structure" payload:"RenameObjectResult"`
-	RenameObjectResult    *RenameObjectResult `type:"structure"`
-	RenameSourceVersionId *string             `location:"header" locationName:"x-amz-rename-source-version-id" type:"string"`
-	// Version ID of the newly created copy.
-	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
+	_                  struct{}            `type:"structure" payload:"RenameObjectResult"`
+	RenameObjectResult *RenameObjectResult `type:"structure"`
 }
 
 // String returns the string representation

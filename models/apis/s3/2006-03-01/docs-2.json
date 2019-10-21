@@ -83,9 +83,11 @@
     "PutObjectAcl": "<p>uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket</p>",
     "PutObjectLegalHold": "<p>Applies a Legal Hold configuration to the specified object.</p>",
     "PutObjectLockConfiguration": "<p>Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket.</p>",
+    "PutObjectMeta": "<p>The upload parameter is used to set the http request header of the object.</p>",
     "PutObjectRetention": "<p>Places an Object Retention configuration on an object.</p>",
     "PutObjectTagging": "<p>Sets the supplied tag-set to an object that already exists in a bucket</p>",
     "PutPublicAccessBlock": "<p>Creates or modifies the <code>PublicAccessBlock</code> configuration for an Amazon S3 bucket.</p>",
+    "RenameObject": "<p>Rename an object that is already stored in Amazon S3.</p>",
     "RestoreObject": "<p>Restores an archived copy of an object back into Amazon S3</p>",
     "SelectObjectContent": "<p>This operation filters the contents of an Amazon S3 object based on a simple Structured Query Language (SQL) statement. In the request, along with the SQL expression, you must also specify a data serialization format (JSON or CSV) of the object. Amazon S3 uses this to parse object data into records, and returns only records that match the specified SQL expression. You must also specify the data serialization format for the response.</p>",
     "UploadPart": "<p>Uploads a part in a multipart upload.</p> <p> <b>Note:</b> After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.</p>",
@@ -326,6 +328,7 @@
         "CompleteMultipartUploadOutput$Bucket": null,
         "CompleteMultipartUploadRequest$Bucket": null,
         "CopyObjectRequest$Bucket": null,
+        "RenameObjectRequest$Bucket": null,
         "CreateBucketRequest$Bucket": null,
         "CreateMultipartUploadOutput$Bucket": "<p>Name of the bucket to which the multipart upload was initiated.</p>",
         "CreateMultipartUploadRequest$Bucket": null,
@@ -401,6 +404,7 @@
         "PutBucketNotificationConfigurationRequest$Bucket": null,
         "PutBucketNotificationRequest$Bucket": null,
         "PutBucketPolicyRequest$Bucket": null,
+        "PutObjectMetaRequest$Bucket": null,
         "PutBucketReplicationRequest$Bucket": null,
         "PutBucketRequestPaymentRequest$Bucket": null,
         "PutBucketTaggingRequest$Bucket": null,
@@ -500,7 +504,8 @@
         "CreateMultipartUploadRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
         "GetObjectOutput$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
         "HeadObjectOutput$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
-        "PutObjectRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>"
+        "PutObjectRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
+        "PutObjectMetaRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>"
       }
     },
     "CloudFunction": {
@@ -601,7 +606,8 @@
         "CreateMultipartUploadRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
         "GetObjectOutput$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
         "HeadObjectOutput$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
-        "PutObjectRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>"
+        "PutObjectRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
+        "PutObjectMetaRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>"
       }
     },
     "ContentEncoding": {
@@ -611,7 +617,8 @@
         "CreateMultipartUploadRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
         "GetObjectOutput$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
         "HeadObjectOutput$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
-        "PutObjectRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>"
+        "PutObjectRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
+        "PutObjectMetaRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>"
       }
     },
     "ContentLanguage": {
@@ -621,7 +628,8 @@
         "CreateMultipartUploadRequest$ContentLanguage": "<p>The language the content is in.</p>",
         "GetObjectOutput$ContentLanguage": "<p>The language the content is in.</p>",
         "HeadObjectOutput$ContentLanguage": "<p>The language the content is in.</p>",
-        "PutObjectRequest$ContentLanguage": "<p>The language the content is in.</p>"
+        "PutObjectRequest$ContentLanguage": "<p>The language the content is in.</p>",
+        "PutObjectMetaRequest$ContentLanguage": "<p>The language the content is in.</p>"
       }
     },
     "ContentLength": {
@@ -630,6 +638,7 @@
         "GetObjectOutput$ContentLength": "<p>Size of the body in bytes.</p>",
         "HeadObjectOutput$ContentLength": "<p>Size of the body in bytes.</p>",
         "PutObjectRequest$ContentLength": "<p>Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.</p>",
+        "PutObjectMetaRequest$ContentLength": "<p>Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.</p>",
         "UploadPartRequest$ContentLength": "<p>Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.</p>"
       }
     },
@@ -671,7 +680,8 @@
         "CreateMultipartUploadRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
         "GetObjectOutput$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
         "HeadObjectOutput$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
-        "PutObjectRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>"
+        "PutObjectRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
+        "PutObjectMetaRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>"
       }
     },
     "ContinuationEvent": {
@@ -1027,6 +1037,7 @@
         "ObjectVersion$ETag": null,
         "Part$ETag": "<p>Entity tag returned when the part was uploaded.</p>",
         "PutObjectOutput$ETag": "<p>Entity tag for the uploaded object.</p>",
+        "PutObjectMetaResult$ETag": "<p>Entity tag for the uploaded object.</p>",
         "UploadPartOutput$ETag": "<p>Entity tag for the uploaded object.</p>"
       }
     },
@@ -1142,7 +1153,8 @@
         "CreateMultipartUploadRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
         "GetObjectOutput$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
         "HeadObjectOutput$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
-        "PutObjectRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>"
+        "PutObjectRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
+        "PutObjectMetaRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>"
       }
     },
     "ExposeHeader": {
@@ -1842,12 +1854,14 @@
       "refs": {
         "CopyObjectResult$LastModified": null,
         "CopyPartResult$LastModified": "<p>Date and time at which the object was uploaded.</p>",
+        "RenameObjectResult$LastModified": null,
         "DeleteMarkerEntry$LastModified": "<p>Date and time the object was last modified.</p>",
         "GetObjectOutput$LastModified": "<p>Last modified date of the object</p>",
         "HeadObjectOutput$LastModified": "<p>Last modified date of the object</p>",
         "Object$LastModified": null,
         "ObjectVersion$LastModified": "<p>Date and time the object was last modified.</p>",
-        "Part$LastModified": "<p>Date and time at which the part was uploaded.</p>"
+        "Part$LastModified": "<p>Date and time at which the part was uploaded.</p>",
+        "PutObjectMetaResult$LastModified": null
       }
     },
     "LifecycleConfiguration": {
@@ -2064,6 +2078,7 @@
         "CreateMultipartUploadRequest$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
         "GetObjectOutput$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
         "HeadObjectOutput$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
+        "PutObjectMetaRequest$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
         "PutObjectRequest$Metadata": "<p>A map of metadata to store with the object in S3.</p>"
       }
     },
@@ -2329,9 +2344,11 @@
         "ObjectVersion$Key": "<p>The object key.</p>",
         "PutObjectAclRequest$Key": null,
         "PutObjectLegalHoldRequest$Key": "<p>The key name for the object that you want to place a Legal Hold on.</p>",
+        "PutObjectMetaRequest$Key": null,
         "PutObjectRequest$Key": "<p>Object key for which the PUT operation was initiated.</p>",
         "PutObjectRetentionRequest$Key": "<p>The key name for the object that you want to apply this Object Retention configuration to.</p>",
         "PutObjectTaggingRequest$Key": null,
+        "RenameObjectRequest$Key": null,
         "RestoreObjectRequest$Key": null,
         "SelectObjectContentRequest$Key": "<p>The object key.</p>",
         "Tag$Key": "<p>Name of the tag.</p>",
@@ -2472,6 +2489,8 @@
         "PutObjectAclRequest$VersionId": "<p>VersionId used to reference a specific version of the object.</p>",
         "PutObjectLegalHoldRequest$VersionId": "<p>The version ID of the object that you want to place a Legal Hold on.</p>",
         "PutObjectOutput$VersionId": "<p>Version of the object.</p>",
+        "PutObjectMetaRequest$VersionId": "<p>VersionId used to reference a specific version of the object.</p>",
+        "PutObjectMetaOutput$VersionId": "<p>Version of the object.</p>",
         "PutObjectRetentionRequest$VersionId": "<p>The version ID for the object that you want to apply this Object Retention configuration to.</p>",
         "PutObjectTaggingOutput$VersionId": null,
         "PutObjectTaggingRequest$VersionId": null,
@@ -2782,6 +2801,22 @@
       "refs": {
       }
     },
+    "PutObjectMetaOutput": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "PutObjectMetaRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "PutObjectMetaResult": {
+      "base": null,
+      "refs": {
+        "PutObjectMetaOutput$PutObjectMetaResult": null
+      }
+    },
     "PutObjectRetentionOutput": {
       "base": null,
       "refs": {
@@ -2890,6 +2925,28 @@
       "refs": {
         "GetBucketWebsiteOutput$RedirectAllRequestsTo": null,
         "WebsiteConfiguration$RedirectAllRequestsTo": null
+      }
+    },
+    "RenameObjectOutput": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "RenameObjectRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "RenameObjectResult": {
+      "base": null,
+      "refs": {
+        "RenameObjectOutput$RenameObjectResult": null
+      }
+    },
+    "RenameSourceKey": {
+      "base": null,
+      "refs": {
+        "RenameObjectRequest$RenameSourceKey": "<p>The name of the source key name of the source object. Must be URL-encoded.</p>"
       }
     },
     "ReplaceKeyPrefixWith": {

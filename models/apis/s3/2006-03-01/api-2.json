@@ -798,6 +798,19 @@
       "input":{"shape":"PutObjectLockConfigurationRequest"},
       "output":{"shape":"PutObjectLockConfigurationOutput"}
     },
+    "PutObjectMeta":{
+      "name":"PutObjectMeta",
+      "http":{
+        "method":"POST",
+        "requestUri":"/{Bucket}/{Key+}?meta"
+      },
+      "input":{"shape":"PutObjectMetaRequest"},
+      "output":{"shape":"PutObjectMetaOutput"},
+      "errors":[
+        {"shape":"NoSuchKey"}
+      ],
+      "documentationUrl":""
+    },
     "PutObjectRetention":{
       "name":"PutObjectRetention",
       "http":{
@@ -823,6 +836,17 @@
         "requestUri":"/{Bucket}?publicAccessBlock"
       },
       "input":{"shape":"PutPublicAccessBlockRequest"}
+    },
+    "RenameObject":{
+      "name":"RenameObject",
+      "http":{
+        "method":"PUT",
+        "requestUri":"/{Bucket}/{Key+}"
+      },
+      "input":{"shape":"RenameObjectRequest"},
+      "output":{"shape":"RenameObjectOutput"},
+      "documentationUrl":"",
+      "alias":"PutObjectRename"
     },
     "RestoreObject":{
       "name":"RestoreObject",
@@ -5176,6 +5200,89 @@
       },
       "payload":"AccessControlPolicy"
     },
+    "PutObjectMetaOutput":{
+      "type":"structure",
+      "members":{
+        "PutObjectMetaResult":{"shape":"PutObjectMetaResult"},
+        "VersionId":{
+          "shape":"ObjectVersionId",
+          "location":"header",
+          "locationName":"x-amz-version-id"
+        }
+      },
+      "payload":"PutObjectMetaResult"
+    },
+    "PutObjectMetaRequest":{
+      "type":"structure",
+      "required":[
+        "Bucket",
+        "Key"
+      ],
+      "members":{
+        "Bucket":{
+          "shape":"BucketName",
+          "location":"uri",
+          "locationName":"Bucket"
+        },
+        "CacheControl":{
+          "shape":"CacheControl",
+          "location":"header",
+          "locationName":"Cache-Control"
+        },
+        "ContentDisposition":{
+          "shape":"ContentDisposition",
+          "location":"header",
+          "locationName":"Content-Disposition"
+        },
+        "ContentEncoding":{
+          "shape":"ContentEncoding",
+          "location":"header",
+          "locationName":"Content-Encoding"
+        },
+        "ContentLanguage":{
+          "shape":"ContentLanguage",
+          "location":"header",
+          "locationName":"Content-Language"
+        },
+        "ContentLength":{
+          "shape":"ContentLength",
+          "location":"header",
+          "locationName":"Content-Length"
+        },
+        "ContentType":{
+          "shape":"ContentType",
+          "location":"header",
+          "locationName":"Content-Type"
+        },
+        "Expires":{
+          "shape":"Expires",
+          "location":"header",
+          "locationName":"Expires"
+        },
+        "Key":{
+          "shape":"ObjectKey",
+          "location":"uri",
+          "locationName":"Key"
+        },
+        "Metadata":{
+          "shape":"Metadata",
+          "location":"headers",
+          "locationName":"x-amz-meta-"
+        },
+        "VersionId":{
+          "shape":"ObjectVersionId",
+          "location":"querystring",
+          "locationName":"versionId"
+        }
+      }
+    },
+    "PutObjectMetaResult":{
+      "type":"structure",
+      "members":{
+        "ETag":{"shape":"ETag"},
+        "LastModified":{"shape":"LastModified"}
+      }
+    },
     "PutObjectLegalHoldOutput":{
       "type":"structure",
       "members":{
@@ -5671,6 +5778,44 @@
       "members":{
         "HostName":{"shape":"HostName"},
         "Protocol":{"shape":"Protocol"}
+      }
+    },
+    "RenameObjectOutput":{
+      "type":"structure",
+      "members":{
+        "RenameObjectResult":{"shape":"RenameObjectResult"}
+      },
+      "payload":"RenameObjectResult"
+    },
+    "RenameObjectRequest": {
+      "type": "structure",
+      "required": [
+        "Bucket",
+        "RenameSourceKey",
+        "Key"
+      ],
+      "members": {
+        "Bucket": {
+          "shape": "BucketName",
+          "location": "uri",
+          "locationName": "Bucket"
+        },
+        "CopySource": {
+          "shape": "RenameSource",
+          "location": "header",
+          "locationName": "x-amz-rename-source-key"
+        },
+        "Key":{
+          "shape":"ObjectKey",
+          "location":"uri",
+          "locationName":"Key"
+        }
+      }
+    },
+    "RenameObjectResult":{
+      "type":"structure",
+      "members":{
+        "LastModified":{"shape":"LastModified"}
       }
     },
     "ReplaceKeyPrefixWith":{"type":"string"},
