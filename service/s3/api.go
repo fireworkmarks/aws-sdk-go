@@ -259,36 +259,6 @@ func (c *S3) CopyObjectWithContext(ctx aws.Context, input *CopyObjectInput, opts
 	return out, req.Send()
 }
 
-const opRenameObject = "RenameObject"
-
-func (c *S3) RenameObjectRequest(input *RenameObjectInput) (req *request.Request, output *RenameObjectOutput) {
-	op := &request.Operation{
-		Name:       opRenameObject,
-		HTTPMethod: "PUT",
-		HTTPPath:   "/{Bucket}/{Key+}",
-	}
-
-	if input == nil {
-		input = &RenameObjectInput{}
-	}
-
-	output = &RenameObjectOutput{}
-	req = c.newRequest(op, input, output)
-	return
-}
-
-func (c *S3) RenameObject(input *RenameObjectInput) (*RenameObjectOutput, error) {
-	req, out := c.RenameObjectRequest(input)
-	return out, req.Send()
-}
-
-func (c *S3) RenameObjectWithContext(ctx aws.Context, input *RenameObjectInput, opts ...request.Option) (*RenameObjectOutput, error) {
-	req, out := c.RenameObjectRequest(input)
-	req.SetContext(ctx)
-	req.ApplyOptions(opts...)
-	return out, req.Send()
-}
-
 const opCreateBucket = "CreateBucket"
 
 // CreateBucketRequest generates a "aws/request.Request" representing the
@@ -6501,6 +6471,85 @@ func (c *S3) PutObjectLockConfigurationWithContext(ctx aws.Context, input *PutOb
 	return out, req.Send()
 }
 
+const opPutObjectMeta = "PutObjectMeta"
+
+// PutObjectMetaRequest generates a "aws/request.Request" representing the
+// client's request for the PutObjectMeta operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See PutObjectMeta for more information on using the PutObjectMeta
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the PutObjectMetaRequest method.
+//    req, resp := client.PutObjectMetaRequest(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectMeta
+func (c *S3) PutObjectMetaRequest(input *PutObjectMetaInput) (req *request.Request, output *PutObjectMetaOutput) {
+	op := &request.Operation{
+		Name:       opPutObjectMeta,
+		HTTPMethod: "POST",
+		HTTPPath:   "/{Bucket}/{Key+}?meta",
+	}
+
+	if input == nil {
+		input = &PutObjectMetaInput{}
+	}
+
+	output = &PutObjectMetaOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// PutObjectMeta API operation for Amazon Simple Storage Service.
+//
+// The upload parameter is used to set the http request header of the object.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon Simple Storage Service's
+// API operation PutObjectMeta for usage and error information.
+//
+// Returned Error Codes:
+//   * ErrCodeNoSuchKey "NoSuchKey"
+//   The specified key does not exist.
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectMeta
+func (c *S3) PutObjectMeta(input *PutObjectMetaInput) (*PutObjectMetaOutput, error) {
+	req, out := c.PutObjectMetaRequest(input)
+	return out, req.Send()
+}
+
+// PutObjectMetaWithContext is the same as PutObjectMeta with the addition of
+// the ability to pass a context and additional request options.
+//
+// See PutObjectMeta for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *S3) PutObjectMetaWithContext(ctx aws.Context, input *PutObjectMetaInput, opts ...request.Option) (*PutObjectMetaOutput, error) {
+	req, out := c.PutObjectMetaRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
 const opPutObjectRetention = "PutObjectRetention"
 
 // PutObjectRetentionRequest generates a "aws/request.Request" representing the
@@ -6720,6 +6769,80 @@ func (c *S3) PutPublicAccessBlock(input *PutPublicAccessBlockInput) (*PutPublicA
 // for more information on using Contexts.
 func (c *S3) PutPublicAccessBlockWithContext(ctx aws.Context, input *PutPublicAccessBlockInput, opts ...request.Option) (*PutPublicAccessBlockOutput, error) {
 	req, out := c.PutPublicAccessBlockRequest(input)
+	req.SetContext(ctx)
+	req.ApplyOptions(opts...)
+	return out, req.Send()
+}
+
+const opRenameObject = "RenameObject"
+
+// RenameObjectRequest generates a "aws/request.Request" representing the
+// client's request for the RenameObject operation. The "output" return
+// value will be populated with the request's response once the request completes
+// successfully.
+//
+// Use "Send" method on the returned Request to send the API call to the service.
+// the "output" return value is not valid until after Send returns without error.
+//
+// See RenameObject for more information on using the RenameObject
+// API call, and error handling.
+//
+// This method is useful when you want to inject custom logic or configuration
+// into the SDK's request lifecycle. Such as custom headers, or retry logic.
+//
+//
+//    // Example sending a request using the RenameObjectRequest method.
+//    req, resp := client.RenameObjectRequest(params)
+//
+//    err := req.Send()
+//    if err == nil { // resp is now filled
+//        fmt.Println(resp)
+//    }
+//
+// See also, https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/RenameObject
+func (c *S3) RenameObjectRequest(input *RenameObjectInput) (req *request.Request, output *RenameObjectOutput) {
+	op := &request.Operation{
+		Name:       opRenameObject,
+		HTTPMethod: "PUT",
+		HTTPPath:   "/{Bucket}/{Key+}",
+	}
+
+	if input == nil {
+		input = &RenameObjectInput{}
+	}
+
+	output = &RenameObjectOutput{}
+	req = c.newRequest(op, input, output)
+	return
+}
+
+// RenameObject API operation for Amazon Simple Storage Service.
+//
+// Rename an object that is already stored in Amazon S3.
+//
+// Returns awserr.Error for service API and SDK errors. Use runtime type assertions
+// with awserr.Error's Code and Message methods to get detailed information about
+// the error.
+//
+// See the AWS API reference guide for Amazon Simple Storage Service's
+// API operation RenameObject for usage and error information.
+// See also, https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/RenameObject
+func (c *S3) RenameObject(input *RenameObjectInput) (*RenameObjectOutput, error) {
+	req, out := c.RenameObjectRequest(input)
+	return out, req.Send()
+}
+
+// RenameObjectWithContext is the same as RenameObject with the addition of
+// the ability to pass a context and additional request options.
+//
+// See RenameObject for details on how to use this API operation.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *S3) RenameObjectWithContext(ctx aws.Context, input *RenameObjectInput, opts ...request.Option) (*RenameObjectOutput, error) {
+	req, out := c.RenameObjectRequest(input)
 	req.SetContext(ctx)
 	req.ApplyOptions(opts...)
 	return out, req.Send()
@@ -7035,36 +7158,6 @@ func (c *S3) UploadPartCopy(input *UploadPartCopyInput) (*UploadPartCopyOutput, 
 // for more information on using Contexts.
 func (c *S3) UploadPartCopyWithContext(ctx aws.Context, input *UploadPartCopyInput, opts ...request.Option) (*UploadPartCopyOutput, error) {
 	req, out := c.UploadPartCopyRequest(input)
-	req.SetContext(ctx)
-	req.ApplyOptions(opts...)
-	return out, req.Send()
-}
-
-const opPutObjectMeta = "PutObjectMeta"
-
-func (c *S3) PutObjectMetaRequest(input *PutObjectMetaInput) (req *request.Request, output *PutObjectMetaOutput) {
-	op := &request.Operation{
-		Name:       opPutObjectMeta,
-		HTTPMethod: "POST",
-		HTTPPath:   "/{Bucket}/{Key+}?meta",
-	}
-
-	if input == nil {
-		input = &PutObjectMetaInput{}
-	}
-
-	output = &PutObjectMetaOutput{}
-	req = c.newRequest(op, input, output)
-	return
-}
-
-func (c *S3) PutObjectMeta(input *PutObjectMetaInput) (*PutObjectMetaOutput, error) {
-	req, out := c.PutObjectMetaRequest(input)
-	return out, req.Send()
-}
-
-func (c *S3) PutObjectMetaWithContext(ctx aws.Context, input *PutObjectMetaInput, opts ...request.Option) (*PutObjectMetaOutput, error) {
-	req, out := c.PutObjectMetaRequest(input)
 	req.SetContext(ctx)
 	req.ApplyOptions(opts...)
 	return out, req.Send()
@@ -8989,135 +9082,6 @@ func (s *CopyPartResult) SetETag(v string) *CopyPartResult {
 
 // SetLastModified sets the LastModified field's value.
 func (s *CopyPartResult) SetLastModified(v time.Time) *CopyPartResult {
-	s.LastModified = &v
-	return s
-}
-
-type RenameObjectInput struct {
-	_ struct{} `type:"structure"`
-
-	// Bucket is a required field
-	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
-
-	// The name of the source bucket and key name of the source object
-	// Must be URL-encoded.
-	// RenameSource is a required field
-	RenameSourceKey *string `location:"header" locationName:"x-amz-rename-source-key" type:"string" required:"true"`
-
-	// Key is a required field
-	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
-}
-
-// String returns the string representation
-func (s RenameObjectInput) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s RenameObjectInput) GoString() string {
-	return s.String()
-}
-
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *RenameObjectInput) Validate() error {
-	invalidParams := request.ErrInvalidParams{Context: "RenameObjectInput"}
-	if s.Bucket == nil {
-		invalidParams.Add(request.NewErrParamRequired("Bucket"))
-	}
-	if s.Bucket != nil && len(*s.Bucket) < 1 {
-		invalidParams.Add(request.NewErrParamMinLen("Bucket", 1))
-	}
-	if s.RenameSourceKey == nil {
-		invalidParams.Add(request.NewErrParamRequired("RenameSourceKey"))
-	}
-	if s.Key == nil {
-		invalidParams.Add(request.NewErrParamRequired("Key"))
-	}
-	if s.Key != nil && len(*s.Key) < 1 {
-		invalidParams.Add(request.NewErrParamMinLen("Key", 1))
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
-// SetBucket sets the Bucket field's value.
-func (s *RenameObjectInput) SetBucket(v string) *RenameObjectInput {
-	s.Bucket = &v
-	return s
-}
-
-func (s *RenameObjectInput) getBucket() (v string) {
-	if s.Bucket == nil {
-		return v
-	}
-	return *s.Bucket
-}
-
-// SetRenameSourceKey sets the RenameSourceKey field's value.
-func (s *RenameObjectInput) SetRenameSourceKey(v string) *RenameObjectInput {
-	s.RenameSourceKey = &v
-	return s
-}
-
-// SetKey sets the Key field's value.
-func (s *RenameObjectInput) SetKey(v string) *RenameObjectInput {
-	s.Key = &v
-	return s
-}
-
-type RenameObjectOutput struct {
-	_                  struct{}            `type:"structure" payload:"RenameObjectResult"`
-	RenameObjectResult *RenameObjectResult `type:"structure"`
-}
-
-// String returns the string representation
-func (s RenameObjectOutput) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s RenameObjectOutput) GoString() string {
-	return s.String()
-}
-
-// SetRenameObjectResult sets the RenameObjectResult field's value.
-func (s *RenameObjectOutput) SetRenameObjectResult(v *RenameObjectResult) *RenameObjectOutput {
-	s.RenameObjectResult = v
-	return s
-}
-
-// SetRenameSourceVersionId sets the RenameSourceVersionId field's value.
-func (s *RenameObjectOutput) SetRenameSourceVersionId(v string) *RenameObjectOutput {
-	s.RenameSourceVersionId = &v
-	return s
-}
-
-// SetVersionId sets the VersionId field's value.
-func (s *RenameObjectOutput) SetVersionId(v string) *RenameObjectOutput {
-	s.VersionId = &v
-	return s
-}
-
-type RenameObjectResult struct {
-	_            struct{}   `type:"structure"`
-	LastModified *time.Time `type:"timestamp"`
-}
-
-// String returns the string representation
-func (s RenameObjectResult) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s RenameObjectResult) GoString() string {
-	return s.String()
-}
-
-// SetLastModified sets the LastModified field's value.
-func (s *RenameObjectResult) SetLastModified(v time.Time) *RenameObjectResult {
 	s.LastModified = &v
 	return s
 }
@@ -20911,6 +20875,213 @@ func (s *PutObjectLockConfigurationOutput) SetRequestCharged(v string) *PutObjec
 	return s
 }
 
+type PutObjectMetaInput struct {
+	_ struct{} `type:"structure"`
+
+	// Bucket is a required field
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+
+	// Specifies caching behavior along the request/reply chain.
+	CacheControl *string `location:"header" locationName:"Cache-Control" type:"string"`
+
+	// Specifies presentational information for the object.
+	ContentDisposition *string `location:"header" locationName:"Content-Disposition" type:"string"`
+
+	// Specifies what content encodings have been applied to the object and thus
+	// what decoding mechanisms must be applied to obtain the media-type referenced
+	// by the Content-Type header field.
+	ContentEncoding *string `location:"header" locationName:"Content-Encoding" type:"string"`
+
+	// The language the content is in.
+	ContentLanguage *string `location:"header" locationName:"Content-Language" type:"string"`
+
+	// Size of the body in bytes. This parameter is useful when the size of the
+	// body cannot be determined automatically.
+	ContentLength *int64 `location:"header" locationName:"Content-Length" type:"long"`
+
+	// A standard MIME type describing the format of the object data.
+	ContentType *string `location:"header" locationName:"Content-Type" type:"string"`
+
+	// The date and time at which the object is no longer cacheable.
+	Expires *time.Time `location:"header" locationName:"Expires" type:"timestamp"`
+
+	// Key is a required field
+	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
+
+	// A map of metadata to store with the object in S3.
+	Metadata map[string]*string `location:"headers" locationName:"x-amz-meta-" type:"map"`
+
+	// VersionId used to reference a specific version of the object.
+	VersionId *string `location:"querystring" locationName:"versionId" type:"string"`
+}
+
+// String returns the string representation
+func (s PutObjectMetaInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutObjectMetaInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *PutObjectMetaInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "PutObjectMetaInput"}
+	if s.Bucket == nil {
+		invalidParams.Add(request.NewErrParamRequired("Bucket"))
+	}
+	if s.Bucket != nil && len(*s.Bucket) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Bucket", 1))
+	}
+	if s.Key == nil {
+		invalidParams.Add(request.NewErrParamRequired("Key"))
+	}
+	if s.Key != nil && len(*s.Key) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Key", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetBucket sets the Bucket field's value.
+func (s *PutObjectMetaInput) SetBucket(v string) *PutObjectMetaInput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *PutObjectMetaInput) getBucket() (v string) {
+	if s.Bucket == nil {
+		return v
+	}
+	return *s.Bucket
+}
+
+// SetCacheControl sets the CacheControl field's value.
+func (s *PutObjectMetaInput) SetCacheControl(v string) *PutObjectMetaInput {
+	s.CacheControl = &v
+	return s
+}
+
+// SetContentDisposition sets the ContentDisposition field's value.
+func (s *PutObjectMetaInput) SetContentDisposition(v string) *PutObjectMetaInput {
+	s.ContentDisposition = &v
+	return s
+}
+
+// SetContentEncoding sets the ContentEncoding field's value.
+func (s *PutObjectMetaInput) SetContentEncoding(v string) *PutObjectMetaInput {
+	s.ContentEncoding = &v
+	return s
+}
+
+// SetContentLanguage sets the ContentLanguage field's value.
+func (s *PutObjectMetaInput) SetContentLanguage(v string) *PutObjectMetaInput {
+	s.ContentLanguage = &v
+	return s
+}
+
+// SetContentLength sets the ContentLength field's value.
+func (s *PutObjectMetaInput) SetContentLength(v int64) *PutObjectMetaInput {
+	s.ContentLength = &v
+	return s
+}
+
+// SetContentType sets the ContentType field's value.
+func (s *PutObjectMetaInput) SetContentType(v string) *PutObjectMetaInput {
+	s.ContentType = &v
+	return s
+}
+
+// SetExpires sets the Expires field's value.
+func (s *PutObjectMetaInput) SetExpires(v time.Time) *PutObjectMetaInput {
+	s.Expires = &v
+	return s
+}
+
+// SetKey sets the Key field's value.
+func (s *PutObjectMetaInput) SetKey(v string) *PutObjectMetaInput {
+	s.Key = &v
+	return s
+}
+
+// SetMetadata sets the Metadata field's value.
+func (s *PutObjectMetaInput) SetMetadata(v map[string]*string) *PutObjectMetaInput {
+	s.Metadata = v
+	return s
+}
+
+// SetVersionId sets the VersionId field's value.
+func (s *PutObjectMetaInput) SetVersionId(v string) *PutObjectMetaInput {
+	s.VersionId = &v
+	return s
+}
+
+type PutObjectMetaOutput struct {
+	_ struct{} `type:"structure" payload:"PutObjectMetaResult"`
+
+	PutObjectMetaResult *PutObjectMetaResult `type:"structure"`
+
+	// Version of the object.
+	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
+}
+
+// String returns the string representation
+func (s PutObjectMetaOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutObjectMetaOutput) GoString() string {
+	return s.String()
+}
+
+// SetPutObjectMetaResult sets the PutObjectMetaResult field's value.
+func (s *PutObjectMetaOutput) SetPutObjectMetaResult(v *PutObjectMetaResult) *PutObjectMetaOutput {
+	s.PutObjectMetaResult = v
+	return s
+}
+
+// SetVersionId sets the VersionId field's value.
+func (s *PutObjectMetaOutput) SetVersionId(v string) *PutObjectMetaOutput {
+	s.VersionId = &v
+	return s
+}
+
+type PutObjectMetaResult struct {
+	_ struct{} `type:"structure"`
+
+	// Entity tag for the uploaded object.
+	ETag *string `type:"string"`
+
+	LastModified *time.Time `type:"timestamp"`
+}
+
+// String returns the string representation
+func (s PutObjectMetaResult) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutObjectMetaResult) GoString() string {
+	return s.String()
+}
+
+// SetETag sets the ETag field's value.
+func (s *PutObjectMetaResult) SetETag(v string) *PutObjectMetaResult {
+	s.ETag = &v
+	return s
+}
+
+// SetLastModified sets the LastModified field's value.
+func (s *PutObjectMetaResult) SetLastModified(v time.Time) *PutObjectMetaResult {
+	s.LastModified = &v
+	return s
+}
+
 type PutObjectOutput struct {
 	_ struct{} `type:"structure"`
 
@@ -21603,6 +21774,125 @@ func (s *RedirectAllRequestsTo) SetHostName(v string) *RedirectAllRequestsTo {
 // SetProtocol sets the Protocol field's value.
 func (s *RedirectAllRequestsTo) SetProtocol(v string) *RedirectAllRequestsTo {
 	s.Protocol = &v
+	return s
+}
+
+type RenameObjectInput struct {
+	_ struct{} `type:"structure"`
+
+	// Bucket is a required field
+	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
+
+	// Key is a required field
+	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
+
+	// The name of the source key name of the source object. Must be URL-encoded.
+	//
+	// RenameSourceKey is a required field
+	RenameSourceKey *string `location:"header" locationName:"x-amz-rename-source-key" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s RenameObjectInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RenameObjectInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RenameObjectInput) Validate() error {
+	invalidParams := request.ErrInvalidParams{Context: "RenameObjectInput"}
+	if s.Bucket == nil {
+		invalidParams.Add(request.NewErrParamRequired("Bucket"))
+	}
+	if s.Bucket != nil && len(*s.Bucket) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Bucket", 1))
+	}
+	if s.Key == nil {
+		invalidParams.Add(request.NewErrParamRequired("Key"))
+	}
+	if s.Key != nil && len(*s.Key) < 1 {
+		invalidParams.Add(request.NewErrParamMinLen("Key", 1))
+	}
+	if s.RenameSourceKey == nil {
+		invalidParams.Add(request.NewErrParamRequired("RenameSourceKey"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// SetBucket sets the Bucket field's value.
+func (s *RenameObjectInput) SetBucket(v string) *RenameObjectInput {
+	s.Bucket = &v
+	return s
+}
+
+func (s *RenameObjectInput) getBucket() (v string) {
+	if s.Bucket == nil {
+		return v
+	}
+	return *s.Bucket
+}
+
+// SetKey sets the Key field's value.
+func (s *RenameObjectInput) SetKey(v string) *RenameObjectInput {
+	s.Key = &v
+	return s
+}
+
+// SetRenameSourceKey sets the RenameSourceKey field's value.
+func (s *RenameObjectInput) SetRenameSourceKey(v string) *RenameObjectInput {
+	s.RenameSourceKey = &v
+	return s
+}
+
+type RenameObjectOutput struct {
+	_ struct{} `type:"structure" payload:"RenameObjectResult"`
+
+	RenameObjectResult *RenameObjectResult `type:"structure"`
+}
+
+// String returns the string representation
+func (s RenameObjectOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RenameObjectOutput) GoString() string {
+	return s.String()
+}
+
+// SetRenameObjectResult sets the RenameObjectResult field's value.
+func (s *RenameObjectOutput) SetRenameObjectResult(v *RenameObjectResult) *RenameObjectOutput {
+	s.RenameObjectResult = v
+	return s
+}
+
+type RenameObjectResult struct {
+	_ struct{} `type:"structure"`
+
+	LastModified *time.Time `type:"timestamp"`
+}
+
+// String returns the string representation
+func (s RenameObjectResult) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RenameObjectResult) GoString() string {
+	return s.String()
+}
+
+// SetLastModified sets the LastModified field's value.
+func (s *RenameObjectResult) SetLastModified(v time.Time) *RenameObjectResult {
+	s.LastModified = &v
 	return s
 }
 
@@ -24389,203 +24679,6 @@ func (s *WebsiteConfiguration) SetRedirectAllRequestsTo(v *RedirectAllRequestsTo
 // SetRoutingRules sets the RoutingRules field's value.
 func (s *WebsiteConfiguration) SetRoutingRules(v []*RoutingRule) *WebsiteConfiguration {
 	s.RoutingRules = v
-	return s
-}
-
-type PutObjectMetaInput struct {
-	_ struct{} `type:"structure"`
-
-	// Bucket is a required field
-	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
-
-	// Specifies caching behavior along the request/reply chain.
-	CacheControl *string `location:"header" locationName:"Cache-Control" type:"string"`
-
-	// Specifies presentational information for the object.
-	ContentDisposition *string `location:"header" locationName:"Content-Disposition" type:"string"`
-
-	// Specifies what content encodings have been applied to the object and thus
-	// what decoding mechanisms must be applied to obtain the media-type referenced
-	// by the Content-Type header field.
-	ContentEncoding *string `location:"header" locationName:"Content-Encoding" type:"string"`
-
-	// The language the content is in.
-	ContentLanguage *string `location:"header" locationName:"Content-Language" type:"string"`
-
-	// Size of the body in bytes. This parameter is useful when the size of the
-	// body cannot be determined automatically.
-	ContentLength *int64 `location:"header" locationName:"Content-Length" type:"long"`
-
-	// A standard MIME type describing the format of the object data.
-	ContentType *string `location:"header" locationName:"Content-Type" type:"string"`
-
-	// The date and time at which the object is no longer cacheable.
-	Expires *time.Time `location:"header" locationName:"Expires" type:"timestamp"`
-
-	// A map of metadata to store with the object in S3.
-	Metadata map[string]*string `location:"headers" locationName:"x-amz-meta-" type:"map"`
-
-	// Key is a required field
-	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
-}
-
-// String returns the string representation
-func (s PutObjectMetaInput) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s PutObjectMetaInput) GoString() string {
-	return s.String()
-}
-
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *PutObjectMetaInput) Validate() error {
-	invalidParams := request.ErrInvalidParams{Context: "PutObjectMetaInput"}
-	if s.Bucket == nil {
-		invalidParams.Add(request.NewErrParamRequired("Bucket"))
-	}
-	if s.Bucket != nil && len(*s.Bucket) < 1 {
-		invalidParams.Add(request.NewErrParamMinLen("Bucket", 1))
-	}
-	if s.Key == nil {
-		invalidParams.Add(request.NewErrParamRequired("Key"))
-	}
-	if s.Key != nil && len(*s.Key) < 1 {
-		invalidParams.Add(request.NewErrParamMinLen("Key", 1))
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
-// SetBucket sets the Bucket field's value.
-func (s *PutObjectMetaInput) SetBucket(v string) *PutObjectMetaInput {
-	s.Bucket = &v
-	return s
-}
-
-func (s *PutObjectMetaInput) getBucket() (v string) {
-	if s.Bucket == nil {
-		return v
-	}
-	return *s.Bucket
-}
-
-// SetCacheControl sets the CacheControl field's value.
-func (s *PutObjectMetaInput) SetCacheControl(v string) *PutObjectMetaInput {
-	s.CacheControl = &v
-	return s
-}
-
-// SetContentDisposition sets the ContentDisposition field's value.
-func (s *PutObjectMetaInput) SetContentDisposition(v string) *PutObjectMetaInput {
-	s.ContentDisposition = &v
-	return s
-}
-
-// SetContentEncoding sets the ContentEncoding field's value.
-func (s *PutObjectMetaInput) SetContentEncoding(v string) *PutObjectMetaInput {
-	s.ContentEncoding = &v
-	return s
-}
-
-// SetContentLanguage sets the ContentLanguage field's value.
-func (s *PutObjectMetaInput) SetContentLanguage(v string) *PutObjectMetaInput {
-	s.ContentLanguage = &v
-	return s
-}
-
-// SetContentLength sets the ContentLength field's value.
-func (s *PutObjectMetaInput) SetContentLength(v int64) *PutObjectMetaInput {
-	s.ContentLength = &v
-	return s
-}
-
-// SetContentType sets the ContentType field's value.
-func (s *PutObjectMetaInput) SetContentType(v string) *PutObjectMetaInput {
-	s.ContentType = &v
-	return s
-}
-
-// SetExpires sets the Expires field's value.
-func (s *PutObjectMetaInput) SetExpires(v time.Time) *PutObjectMetaInput {
-	s.Expires = &v
-	return s
-}
-
-// SetKey sets the Key field's value.
-func (s *PutObjectMetaInput) SetKey(v string) *PutObjectMetaInput {
-	s.Key = &v
-	return s
-}
-
-// SetMetadata sets the Metadata field's value.
-func (s *PutObjectMetaInput) SetMetadata(v map[string]*string) *PutObjectMetaInput {
-	s.Metadata = v
-	return s
-}
-
-type PutObjectMetaOutput struct {
-	_ struct{} `type:"structure" payload:"PutObjectMetaResult"`
-
-	PutObjectMetaResult *PutObjectMetaResult `type:"structure"`
-
-	// Version ID of the newly created copy.
-	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
-}
-
-// String returns the string representation
-func (s PutObjectMetaOutput) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s PutObjectMetaOutput) GoString() string {
-	return s.String()
-}
-
-// SetCopyObjectResult sets the CopyObjectResult field's value.
-func (s *PutObjectMetaOutput) SetCopyObjectResult(v *PutObjectMetaResult) *PutObjectMetaOutput {
-	s.CopyObjectResult = v
-	return s
-}
-
-// SetVersionId sets the VersionId field's value.
-func (s *PutObjectMetaOutput) SetVersionId(v string) *PutObjectMetaOutput {
-	s.VersionId = &v
-	return s
-}
-
-type PutObjectMetaResult struct {
-	_ struct{} `type:"structure"`
-
-	ETag *string `type:"string"`
-
-	LastModified *time.Time `type:"timestamp"`
-}
-
-// String returns the string representation
-func (s PutObjectMetaResult) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s PutObjectMetaResult) GoString() string {
-	return s.String()
-}
-
-// SetETag sets the ETag field's value.
-func (s *PutObjectMetaResult) SetETag(v string) *PutObjectMetaResult {
-	s.ETag = &v
-	return s
-}
-
-// SetLastModified sets the LastModified field's value.
-func (s *PutObjectMetaResult) SetLastModified(v time.Time) *PutObjectMetaResult {
-	s.LastModified = &v
 	return s
 }
 

@@ -72,10 +72,6 @@ type S3API interface {
 	CopyObjectWithContext(aws.Context, *s3.CopyObjectInput, ...request.Option) (*s3.CopyObjectOutput, error)
 	CopyObjectRequest(*s3.CopyObjectInput) (*request.Request, *s3.CopyObjectOutput)
 
-	RenameObject(*s3.RenameObjectInput) (*s3.RenameObjectOutput, error)
-	RenameObjectWithContext(aws.Context, *s3.RenameObjectInput, ...request.Option) (*s3.RenameObjectOutput, error)
-	RenameObjectRequest(*s3.RenameObjectInput) (*request.Request, *s3.RenameObjectOutput)
-
 	CreateBucket(*s3.CreateBucketInput) (*s3.CreateBucketOutput, error)
 	CreateBucketWithContext(aws.Context, *s3.CreateBucketInput, ...request.Option) (*s3.CreateBucketOutput, error)
 	CreateBucketRequest(*s3.CreateBucketInput) (*request.Request, *s3.CreateBucketOutput)
@@ -403,6 +399,10 @@ type S3API interface {
 	PutObjectLockConfigurationWithContext(aws.Context, *s3.PutObjectLockConfigurationInput, ...request.Option) (*s3.PutObjectLockConfigurationOutput, error)
 	PutObjectLockConfigurationRequest(*s3.PutObjectLockConfigurationInput) (*request.Request, *s3.PutObjectLockConfigurationOutput)
 
+	PutObjectMeta(*s3.PutObjectMetaInput) (*s3.PutObjectMetaOutput, error)
+	PutObjectMetaWithContext(aws.Context, *s3.PutObjectMetaInput, ...request.Option) (*s3.PutObjectMetaOutput, error)
+	PutObjectMetaRequest(*s3.PutObjectMetaInput) (*request.Request, *s3.PutObjectMetaOutput)
+
 	PutObjectRetention(*s3.PutObjectRetentionInput) (*s3.PutObjectRetentionOutput, error)
 	PutObjectRetentionWithContext(aws.Context, *s3.PutObjectRetentionInput, ...request.Option) (*s3.PutObjectRetentionOutput, error)
 	PutObjectRetentionRequest(*s3.PutObjectRetentionInput) (*request.Request, *s3.PutObjectRetentionOutput)
@@ -411,13 +411,13 @@ type S3API interface {
 	PutObjectTaggingWithContext(aws.Context, *s3.PutObjectTaggingInput, ...request.Option) (*s3.PutObjectTaggingOutput, error)
 	PutObjectTaggingRequest(*s3.PutObjectTaggingInput) (*request.Request, *s3.PutObjectTaggingOutput)
 
-	PutObjectMetaRequest(input *PutObjectCustomAttrsInput) (req *request.Request, output *PutObjectCustomAttrsOutput)
-	PutObjectMeta(input *PutObjectCustomAttrsInput) (*PutObjectCustomAttrsOutput, error)
-	PutObjectMetaWithContext(ctx aws.Context, input *PutObjectCustomAttrsInput, opts ...request.Option) (*PutObjectCustomAttrsOutput, error)
-
 	PutPublicAccessBlock(*s3.PutPublicAccessBlockInput) (*s3.PutPublicAccessBlockOutput, error)
 	PutPublicAccessBlockWithContext(aws.Context, *s3.PutPublicAccessBlockInput, ...request.Option) (*s3.PutPublicAccessBlockOutput, error)
 	PutPublicAccessBlockRequest(*s3.PutPublicAccessBlockInput) (*request.Request, *s3.PutPublicAccessBlockOutput)
+
+	RenameObject(*s3.RenameObjectInput) (*s3.RenameObjectOutput, error)
+	RenameObjectWithContext(aws.Context, *s3.RenameObjectInput, ...request.Option) (*s3.RenameObjectOutput, error)
+	RenameObjectRequest(*s3.RenameObjectInput) (*request.Request, *s3.RenameObjectOutput)
 
 	RestoreObject(*s3.RestoreObjectInput) (*s3.RestoreObjectOutput, error)
 	RestoreObjectWithContext(aws.Context, *s3.RestoreObjectInput, ...request.Option) (*s3.RestoreObjectOutput, error)

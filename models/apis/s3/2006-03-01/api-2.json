@@ -5800,8 +5800,8 @@
           "location": "uri",
           "locationName": "Bucket"
         },
-        "CopySource": {
-          "shape": "RenameSource",
+        "RenameSourceKey": {
+          "shape": "RenameSourceKey",
           "location": "header",
           "locationName": "x-amz-rename-source-key"
         },
@@ -5818,6 +5818,7 @@
         "LastModified":{"shape":"LastModified"}
       }
     },
+    "RenameSourceKey": {"type":"string"},
     "ReplaceKeyPrefixWith":{"type":"string"},
     "ReplaceKeyWith":{"type":"string"},
     "ReplicaKmsKeyID":{"type":"string"},
