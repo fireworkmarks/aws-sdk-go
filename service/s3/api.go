@@ -6510,6 +6510,7 @@ func (c *S3) PutObjectMetaRequest(input *PutObjectMetaInput) (req *request.Reque
 
 	output = &PutObjectMetaOutput{}
 	req = c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Swap(restxml.UnmarshalHandler.Name, protocol.UnmarshalDiscardBodyHandler)
 	return
 }
 
@@ -17499,6 +17500,66 @@ func (s *LoggingEnabled) SetTargetPrefix(v string) *LoggingEnabled {
 	return s
 }
 
+type MetaConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	Headers []*MetaData `locationNameList:"MetaData" type:"list"`
+
+	VersionID *string `type:"string"`
+}
+
+// String returns the string representation
+func (s MetaConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s MetaConfiguration) GoString() string {
+	return s.String()
+}
+
+// SetHeaders sets the Headers field's value.
+func (s *MetaConfiguration) SetHeaders(v []*MetaData) *MetaConfiguration {
+	s.Headers = v
+	return s
+}
+
+// SetVersionID sets the VersionID field's value.
+func (s *MetaConfiguration) SetVersionID(v string) *MetaConfiguration {
+	s.VersionID = &v
+	return s
+}
+
+type MetaData struct {
+	_ struct{} `type:"structure"`
+
+	Key *string `locationName:"key" type:"string"`
+
+	Value *string `locationName:"value" type:"string"`
+}
+
+// String returns the string representation
+func (s MetaData) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s MetaData) GoString() string {
+	return s.String()
+}
+
+// SetKey sets the Key field's value.
+func (s *MetaData) SetKey(v string) *MetaData {
+	s.Key = &v
+	return s
+}
+
+// SetValue sets the Value field's value.
+func (s *MetaData) SetValue(v string) *MetaData {
+	s.Value = &v
+	return s
+}
+
 // A metadata key-value pair to store with an object.
 type MetadataEntry struct {
 	_ struct{} `type:"structure"`
@@ -20876,43 +20937,15 @@ func (s *PutObjectLockConfigurationOutput) SetRequestCharged(v string) *PutObjec
 }
 
 type PutObjectMetaInput struct {
-	_ struct{} `type:"structure"`
+	_ struct{} `type:"structure" payload:"MetaConfiguration"`
 
 	// Bucket is a required field
 	Bucket *string `location:"uri" locationName:"Bucket" type:"string" required:"true"`
 
-	// Specifies caching behavior along the request/reply chain.
-	CacheControl *string `location:"header" locationName:"Cache-Control" type:"string"`
-
-	// Specifies presentational information for the object.
-	ContentDisposition *string `location:"header" locationName:"Content-Disposition" type:"string"`
-
-	// Specifies what content encodings have been applied to the object and thus
-	// what decoding mechanisms must be applied to obtain the media-type referenced
-	// by the Content-Type header field.
-	ContentEncoding *string `location:"header" locationName:"Content-Encoding" type:"string"`
-
-	// The language the content is in.
-	ContentLanguage *string `location:"header" locationName:"Content-Language" type:"string"`
-
-	// Size of the body in bytes. This parameter is useful when the size of the
-	// body cannot be determined automatically.
-	ContentLength *int64 `location:"header" locationName:"Content-Length" type:"long"`
-
-	// A standard MIME type describing the format of the object data.
-	ContentType *string `location:"header" locationName:"Content-Type" type:"string"`
-
-	// The date and time at which the object is no longer cacheable.
-	Expires *time.Time `location:"header" locationName:"Expires" type:"timestamp"`
-
 	// Key is a required field
 	Key *string `location:"uri" locationName:"Key" min:"1" type:"string" required:"true"`
 
-	// A map of metadata to store with the object in S3.
-	Metadata map[string]*string `location:"headers" locationName:"x-amz-meta-" type:"map"`
-
-	// VersionId used to reference a specific version of the object.
-	VersionId *string `location:"querystring" locationName:"versionId" type:"string"`
+	MetaConfiguration *MetaConfiguration `locationName:"MetaConfiguration" type:"structure" xmlURI:"http://s3.amazonaws.com/doc/2006-03-01/"`
 }
 
 // String returns the string representation
@@ -20960,73 +20993,20 @@ func (s *PutObjectMetaInput) getBucket() (v string) {
 	return *s.Bucket
 }
 
-// SetCacheControl sets the CacheControl field's value.
-func (s *PutObjectMetaInput) SetCacheControl(v string) *PutObjectMetaInput {
-	s.CacheControl = &v
-	return s
-}
-
-// SetContentDisposition sets the ContentDisposition field's value.
-func (s *PutObjectMetaInput) SetContentDisposition(v string) *PutObjectMetaInput {
-	s.ContentDisposition = &v
-	return s
-}
-
-// SetContentEncoding sets the ContentEncoding field's value.
-func (s *PutObjectMetaInput) SetContentEncoding(v string) *PutObjectMetaInput {
-	s.ContentEncoding = &v
-	return s
-}
-
-// SetContentLanguage sets the ContentLanguage field's value.
-func (s *PutObjectMetaInput) SetContentLanguage(v string) *PutObjectMetaInput {
-	s.ContentLanguage = &v
-	return s
-}
-
-// SetContentLength sets the ContentLength field's value.
-func (s *PutObjectMetaInput) SetContentLength(v int64) *PutObjectMetaInput {
-	s.ContentLength = &v
-	return s
-}
-
-// SetContentType sets the ContentType field's value.
-func (s *PutObjectMetaInput) SetContentType(v string) *PutObjectMetaInput {
-	s.ContentType = &v
-	return s
-}
-
-// SetExpires sets the Expires field's value.
-func (s *PutObjectMetaInput) SetExpires(v time.Time) *PutObjectMetaInput {
-	s.Expires = &v
-	return s
-}
-
 // SetKey sets the Key field's value.
 func (s *PutObjectMetaInput) SetKey(v string) *PutObjectMetaInput {
 	s.Key = &v
 	return s
 }
 
-// SetMetadata sets the Metadata field's value.
-func (s *PutObjectMetaInput) SetMetadata(v map[string]*string) *PutObjectMetaInput {
-	s.Metadata = v
-	return s
-}
-
-// SetVersionId sets the VersionId field's value.
-func (s *PutObjectMetaInput) SetVersionId(v string) *PutObjectMetaInput {
-	s.VersionId = &v
+// SetMetaConfiguration sets the MetaConfiguration field's value.
+func (s *PutObjectMetaInput) SetMetaConfiguration(v *MetaConfiguration) *PutObjectMetaInput {
+	s.MetaConfiguration = v
 	return s
 }
 
 type PutObjectMetaOutput struct {
-	_ struct{} `type:"structure" payload:"PutObjectMetaResult"`
-
-	PutObjectMetaResult *PutObjectMetaResult `type:"structure"`
-
-	// Version of the object.
-	VersionId *string `location:"header" locationName:"x-amz-version-id" type:"string"`
+	_ struct{} `type:"structure"`
 }
 
 // String returns the string representation
@@ -21037,49 +21017,6 @@ func (s PutObjectMetaOutput) String() string {
 // GoString returns the string representation
 func (s PutObjectMetaOutput) GoString() string {
 	return s.String()
-}
-
-// SetPutObjectMetaResult sets the PutObjectMetaResult field's value.
-func (s *PutObjectMetaOutput) SetPutObjectMetaResult(v *PutObjectMetaResult) *PutObjectMetaOutput {
-	s.PutObjectMetaResult = v
-	return s
-}
-
-// SetVersionId sets the VersionId field's value.
-func (s *PutObjectMetaOutput) SetVersionId(v string) *PutObjectMetaOutput {
-	s.VersionId = &v
-	return s
-}
-
-type PutObjectMetaResult struct {
-	_ struct{} `type:"structure"`
-
-	// Entity tag for the uploaded object.
-	ETag *string `type:"string"`
-
-	LastModified *time.Time `type:"timestamp"`
-}
-
-// String returns the string representation
-func (s PutObjectMetaResult) String() string {
-	return awsutil.Prettify(s)
-}
-
-// GoString returns the string representation
-func (s PutObjectMetaResult) GoString() string {
-	return s.String()
-}
-
-// SetETag sets the ETag field's value.
-func (s *PutObjectMetaResult) SetETag(v string) *PutObjectMetaResult {
-	s.ETag = &v
-	return s
-}
-
-// SetLastModified sets the LastModified field's value.
-func (s *PutObjectMetaResult) SetLastModified(v time.Time) *PutObjectMetaResult {
-	s.LastModified = &v
-	return s
 }
 
 type PutObjectOutput struct {

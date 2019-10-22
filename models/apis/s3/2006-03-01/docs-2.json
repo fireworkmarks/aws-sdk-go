@@ -504,8 +504,7 @@
         "CreateMultipartUploadRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
         "GetObjectOutput$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
         "HeadObjectOutput$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
-        "PutObjectRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>",
-        "PutObjectMetaRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>"
+        "PutObjectRequest$CacheControl": "<p>Specifies caching behavior along the request/reply chain.</p>"
       }
     },
     "CloudFunction": {
@@ -606,8 +605,7 @@
         "CreateMultipartUploadRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
         "GetObjectOutput$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
         "HeadObjectOutput$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
-        "PutObjectRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>",
-        "PutObjectMetaRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>"
+        "PutObjectRequest$ContentDisposition": "<p>Specifies presentational information for the object.</p>"
       }
     },
     "ContentEncoding": {
@@ -617,8 +615,7 @@
         "CreateMultipartUploadRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
         "GetObjectOutput$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
         "HeadObjectOutput$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
-        "PutObjectRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>",
-        "PutObjectMetaRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>"
+        "PutObjectRequest$ContentEncoding": "<p>Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.</p>"
       }
     },
     "ContentLanguage": {
@@ -628,8 +625,7 @@
         "CreateMultipartUploadRequest$ContentLanguage": "<p>The language the content is in.</p>",
         "GetObjectOutput$ContentLanguage": "<p>The language the content is in.</p>",
         "HeadObjectOutput$ContentLanguage": "<p>The language the content is in.</p>",
-        "PutObjectRequest$ContentLanguage": "<p>The language the content is in.</p>",
-        "PutObjectMetaRequest$ContentLanguage": "<p>The language the content is in.</p>"
+        "PutObjectRequest$ContentLanguage": "<p>The language the content is in.</p>"
       }
     },
     "ContentLength": {
@@ -638,7 +634,6 @@
         "GetObjectOutput$ContentLength": "<p>Size of the body in bytes.</p>",
         "HeadObjectOutput$ContentLength": "<p>Size of the body in bytes.</p>",
         "PutObjectRequest$ContentLength": "<p>Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.</p>",
-        "PutObjectMetaRequest$ContentLength": "<p>Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.</p>",
         "UploadPartRequest$ContentLength": "<p>Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.</p>"
       }
     },
@@ -680,8 +675,7 @@
         "CreateMultipartUploadRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
         "GetObjectOutput$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
         "HeadObjectOutput$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
-        "PutObjectRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>",
-        "PutObjectMetaRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>"
+        "PutObjectRequest$ContentType": "<p>A standard MIME type describing the format of the object data.</p>"
       }
     },
     "ContinuationEvent": {
@@ -1037,7 +1031,6 @@
         "ObjectVersion$ETag": null,
         "Part$ETag": "<p>Entity tag returned when the part was uploaded.</p>",
         "PutObjectOutput$ETag": "<p>Entity tag for the uploaded object.</p>",
-        "PutObjectMetaResult$ETag": "<p>Entity tag for the uploaded object.</p>",
         "UploadPartOutput$ETag": "<p>Entity tag for the uploaded object.</p>"
       }
     },
@@ -1153,8 +1146,7 @@
         "CreateMultipartUploadRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
         "GetObjectOutput$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
         "HeadObjectOutput$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
-        "PutObjectRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>",
-        "PutObjectMetaRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>"
+        "PutObjectRequest$Expires": "<p>The date and time at which the object is no longer cacheable.</p>"
       }
     },
     "ExposeHeader": {
@@ -1860,8 +1852,7 @@
         "HeadObjectOutput$LastModified": "<p>Last modified date of the object</p>",
         "Object$LastModified": null,
         "ObjectVersion$LastModified": "<p>Date and time the object was last modified.</p>",
-        "Part$LastModified": "<p>Date and time at which the part was uploaded.</p>",
-        "PutObjectMetaResult$LastModified": null
+        "Part$LastModified": "<p>Date and time at which the part was uploaded.</p>"
       }
     },
     "LifecycleConfiguration": {
@@ -2078,7 +2069,6 @@
         "CreateMultipartUploadRequest$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
         "GetObjectOutput$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
         "HeadObjectOutput$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
-        "PutObjectMetaRequest$Metadata": "<p>A map of metadata to store with the object in S3.</p>",
         "PutObjectRequest$Metadata": "<p>A map of metadata to store with the object in S3.</p>"
       }
     },
@@ -2489,8 +2479,6 @@
         "PutObjectAclRequest$VersionId": "<p>VersionId used to reference a specific version of the object.</p>",
         "PutObjectLegalHoldRequest$VersionId": "<p>The version ID of the object that you want to place a Legal Hold on.</p>",
         "PutObjectOutput$VersionId": "<p>Version of the object.</p>",
-        "PutObjectMetaRequest$VersionId": "<p>VersionId used to reference a specific version of the object.</p>",
-        "PutObjectMetaOutput$VersionId": "<p>Version of the object.</p>",
         "PutObjectRetentionRequest$VersionId": "<p>The version ID for the object that you want to apply this Object Retention configuration to.</p>",
         "PutObjectTaggingOutput$VersionId": null,
         "PutObjectTaggingRequest$VersionId": null,
@@ -2801,20 +2789,9 @@
       "refs": {
       }
     },
-    "PutObjectMetaOutput": {
-      "base": null,
-      "refs": {
-      }
-    },
     "PutObjectMetaRequest": {
       "base": null,
       "refs": {
-      }
-    },
-    "PutObjectMetaResult": {
-      "base": null,
-      "refs": {
-        "PutObjectMetaOutput$PutObjectMetaResult": null
       }
     },
     "PutObjectRetentionOutput": {

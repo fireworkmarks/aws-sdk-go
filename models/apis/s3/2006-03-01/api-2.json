@@ -805,7 +805,6 @@
         "requestUri":"/{Bucket}/{Key+}?meta"
       },
       "input":{"shape":"PutObjectMetaRequest"},
-      "output":{"shape":"PutObjectMetaOutput"},
       "errors":[
         {"shape":"NoSuchKey"}
       ],
@@ -3300,6 +3299,13 @@
         }
       }
     },
+    "Headers": {
+      "type":"list",
+      "member":{
+        "shape":"MetaData",
+        "locationName":"MetaData"
+      }
+    },
     "HeadObjectOutput":{
       "type":"structure",
       "members":{
@@ -4237,6 +4243,20 @@
     "MaxParts":{"type":"integer"},
     "MaxUploads":{"type":"integer"},
     "Message":{"type":"string"},
+    "MetaConfiguration":{
+      "type":"structure",
+      "members":{
+        "VersionID":{"shape":"VersionID"},
+        "Headers":{"shape":"Headers"}
+      }
+    },
+    "MetaData":{
+      "type":"structure",
+      "members":{
+        "key":{"shape":"MetadataKey"},
+        "value":{"shape":"MetadataValue"}
+      }
+    },
     "Metadata":{
       "type":"map",
       "key":{"shape":"MetadataKey"},
@@ -5200,18 +5220,6 @@
       },
       "payload":"AccessControlPolicy"
     },
-    "PutObjectMetaOutput":{
-      "type":"structure",
-      "members":{
-        "PutObjectMetaResult":{"shape":"PutObjectMetaResult"},
-        "VersionId":{
-          "shape":"ObjectVersionId",
-          "location":"header",
-          "locationName":"x-amz-version-id"
-        }
-      },
-      "payload":"PutObjectMetaResult"
-    },
     "PutObjectMetaRequest":{
       "type":"structure",
       "required":[
@@ -5224,64 +5232,18 @@
           "location":"uri",
           "locationName":"Bucket"
         },
-        "CacheControl":{
-          "shape":"CacheControl",
-          "location":"header",
-          "locationName":"Cache-Control"
-        },
-        "ContentDisposition":{
-          "shape":"ContentDisposition",
-          "location":"header",
-          "locationName":"Content-Disposition"
-        },
-        "ContentEncoding":{
-          "shape":"ContentEncoding",
-          "location":"header",
-          "locationName":"Content-Encoding"
-        },
-        "ContentLanguage":{
-          "shape":"ContentLanguage",
-          "location":"header",
-          "locationName":"Content-Language"
-        },
-        "ContentLength":{
-          "shape":"ContentLength",
-          "location":"header",
-          "locationName":"Content-Length"
-        },
-        "ContentType":{
-          "shape":"ContentType",
-          "location":"header",
-          "locationName":"Content-Type"
-        },
-        "Expires":{
-          "shape":"Expires",
-          "location":"header",
-          "locationName":"Expires"
-        },
         "Key":{
           "shape":"ObjectKey",
           "location":"uri",
           "locationName":"Key"
         },
-        "Metadata":{
-          "shape":"Metadata",
-          "location":"headers",
-          "locationName":"x-amz-meta-"
-        },
-        "VersionId":{
-          "shape":"ObjectVersionId",
-          "location":"querystring",
-          "locationName":"versionId"
+        "MetaConfiguration":{
+          "shape":"MetaConfiguration",
+          "locationName":"MetaConfiguration",
+          "xmlNamespace":{"uri":"http://s3.amazonaws.com/doc/2006-03-01/"}
         }
-      }
-    },
-    "PutObjectMetaResult":{
-      "type":"structure",
-      "members":{
-        "ETag":{"shape":"ETag"},
-        "LastModified":{"shape":"LastModified"}
-      }
+      },
+      "payload":"MetaConfiguration"
     },
     "PutObjectLegalHoldOutput":{
       "type":"structure",
@@ -6639,6 +6601,7 @@
       }
     },
     "Value":{"type":"string"},
+    "VersionID": {"type": "string"},
     "VersionIdMarker":{"type":"string"},
     "VersioningConfiguration":{
       "type":"structure",
