@@ -801,7 +801,7 @@
     "PutObjectMeta":{
       "name":"PutObjectMeta",
       "http":{
-        "method":"POST",
+        "method":"PUT",
         "requestUri":"/{Bucket}/{Key+}?meta"
       },
       "input":{"shape":"PutObjectMetaRequest"},

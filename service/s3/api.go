@@ -6500,7 +6500,7 @@ const opPutObjectMeta = "PutObjectMeta"
 func (c *S3) PutObjectMetaRequest(input *PutObjectMetaInput) (req *request.Request, output *PutObjectMetaOutput) {
 	op := &request.Operation{
 		Name:       opPutObjectMeta,
-		HTTPMethod: "POST",
+		HTTPMethod: "PUT",
 		HTTPPath:   "/{Bucket}/{Key+}?meta",
 	}
 
